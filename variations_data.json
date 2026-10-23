@@ -1,0 +1,2039 @@
+{
+  "words": {
+    "précieux": {
+      "category": "adjectif",
+      "femSing": "précieuse",
+      "mascPlur": "précieux",
+      "femPlur": "précieuses",
+      "note": "Invariable au masculin pluriel (-x)"
+    },
+    "finalement": {
+      "category": "invariable",
+      "note": "Adverbe invariable"
+    },
+    "prisonnier": {
+      "category": "nom / adjectif",
+      "femSing": "prisonnière",
+      "mascPlur": "prisonniers",
+      "femPlur": "prisonnières"
+    },
+    "ennemi": {
+      "category": "nom / adjectif",
+      "femSing": "ennemie",
+      "mascPlur": "ennemis",
+      "femPlur": "ennemies"
+    },
+    "résistance": {
+      "category": "nom",
+      "mascPlur": "résistances"
+    },
+    "triomphe": {
+      "category": "nom",
+      "mascPlur": "triomphes"
+    },
+    "après": {
+      "category": "invariable"
+    },
+    "constituer": {
+      "category": "verbe",
+      "present": {
+        "il": "constitue",
+        "ils": "constituent",
+        "nous": "constituons"
+      },
+      "imparfait": {
+        "il": "constituait",
+        "ils": "constituaient"
+      },
+      "futur": {
+        "il": "constituera",
+        "ils": "constitueront"
+      },
+      "passeCompose": "a constitué",
+      "participePasse": "constitué"
+    },
+    "vaincre": {
+      "category": "verbe",
+      "present": {
+        "il": "vainc",
+        "ils": "vainquent",
+        "nous": "vainquons"
+      },
+      "imparfait": {
+        "il": "vainquait",
+        "ils": "vainquaient"
+      },
+      "futur": {
+        "il": "vaincra",
+        "ils": "vaincront"
+      },
+      "passeCompose": "a vaincu",
+      "participePasse": "vaincu"
+    },
+    "remporter": {
+      "category": "verbe",
+      "present": {
+        "il": "remporte",
+        "ils": "remportent",
+        "nous": "remportons"
+      },
+      "imparfait": {
+        "il": "remportait",
+        "ils": "remportaient"
+      },
+      "futur": {
+        "il": "remportera",
+        "ils": "remporteront"
+      },
+      "passeCompose": "a remporté",
+      "participePasse": "remporté"
+    },
+    "essuyer": {
+      "category": "verbe",
+      "present": {
+        "il": "essuie",
+        "ils": "essuient",
+        "nous": "essuyons"
+      },
+      "imparfait": {
+        "il": "essuyait",
+        "ils": "essuyaient"
+      },
+      "futur": {
+        "il": "essuiera",
+        "ils": "essuieront"
+      },
+      "passeCompose": "a essuyé",
+      "participePasse": "essuyé"
+    },
+    "historique": {
+      "category": "adjectif",
+      "femSing": "historique",
+      "mascPlur": "historiques",
+      "femPlur": "historiques"
+    },
+    "général": {
+      "category": "nom / adjectif",
+      "femSing": "générale",
+      "mascPlur": "généraux",
+      "femPlur": "générales",
+      "note": "Pluriel en -aux"
+    },
+    "célèbre": {
+      "category": "adjectif",
+      "femSing": "célèbre",
+      "mascPlur": "célèbres",
+      "femPlur": "célèbres"
+    },
+    "opposer": {
+      "category": "verbe",
+      "present": {
+        "il": "oppose",
+        "ils": "opposent",
+        "nous": "opposons"
+      },
+      "imparfait": {
+        "il": "opposait",
+        "ils": "opposaient"
+      },
+      "futur": {
+        "il": "opposera",
+        "ils": "opposeront"
+      },
+      "passeCompose": "a opposé",
+      "participePasse": "opposé"
+    },
+    "témoignage": {
+      "category": "nom",
+      "mascPlur": "témoignages"
+    },
+    "royaume": {
+      "category": "nom",
+      "mascPlur": "royaumes"
+    },
+    "ensemble": {
+      "category": "invariable"
+    },
+    "affaibli": {
+      "category": "adjectif",
+      "femSing": "affaiblie",
+      "mascPlur": "affaiblis",
+      "femPlur": "affaiblies"
+    },
+    "fuite": {
+      "category": "nom",
+      "mascPlur": "fuites"
+    },
+    "rencontrer": {
+      "category": "verbe",
+      "present": {
+        "il": "rencontre",
+        "ils": "rencontrent"
+      },
+      "imparfait": {
+        "il": "rencontrait",
+        "ils": "rencontraient"
+      },
+      "futur": {
+        "il": "rencontrera",
+        "ils": "rencontreront"
+      },
+      "passeCompose": "a rencontré",
+      "participePasse": "rencontré"
+    },
+    "né": {
+      "category": "adjectif",
+      "femSing": "née",
+      "mascPlur": "nés",
+      "femPlur": "nées"
+    },
+    "Rome": {
+      "category": "nom propre"
+    },
+    "Antiquité": {
+      "category": "nom propre"
+    },
+    "dynastie": {
+      "category": "nom",
+      "mascPlur": "dynasties"
+    },
+    "partisan": {
+      "category": "nom / adjectif",
+      "femSing": " partisane",
+      "mascPlur": "partisans",
+      "femPlur": "partisanes"
+    },
+    "trône": {
+      "category": "nom",
+      "mascPlur": "trônes"
+    },
+    "alliance": {
+      "category": "nom",
+      "mascPlur": "alliances"
+    },
+    "complot": {
+      "category": "nom",
+      "mascPlur": "complots"
+    },
+    "obtenir": {
+      "category": "verbe",
+      "present": {
+        "il": "obtient",
+        "ils": "obtiennent",
+        "nous": "obtenons"
+      },
+      "imparfait": {
+        "il": "obtenait",
+        "ils": "obtenaient"
+      },
+      "futur": {
+        "il": "obtiendra",
+        "ils": "obtiendront"
+      },
+      "passeCompose": "a obtenu",
+      "participePasse": "obtenu"
+    },
+    "tutelle": {
+      "category": "nom",
+      "mascPlur": "tutelles"
+    },
+    "souhaiter": {
+      "category": "verbe",
+      "present": {
+        "il": "souhaite",
+        "ils": "souhaitent"
+      },
+      "imparfait": {
+        "il": "souhaitait",
+        "ils": "souhaitaient"
+      },
+      "futur": {
+        "il": "souhaitera",
+        "ils": "souhaiteront"
+      },
+      "passeCompose": "a souhaité",
+      "participePasse": "souhaité"
+    },
+    "royal": {
+      "category": "adjectif",
+      "femSing": "royale",
+      "mascPlur": "royaux",
+      "femPlur": "royales",
+      "note": "Pluriel en -aux"
+    },
+    "musicien": {
+      "category": "nom",
+      "femSing": "musicienne",
+      "mascPlur": "musiciens",
+      "femPlur": "musiciennes"
+    },
+    "poète": {
+      "category": "nom",
+      "femSing": "poétesse",
+      "mascPlur": "poètes",
+      "femPlur": "poétesses"
+    },
+    "troubadour": {
+      "category": "nom",
+      "mascPlur": "troubadours"
+    },
+    "divorce": {
+      "category": "nom",
+      "mascPlur": "divorces"
+    },
+    "Aquitaine": {
+      "category": "nom propre"
+    },
+    "cultivé": {
+      "category": "adjectif",
+      "femSing": "cultivée",
+      "mascPlur": "cultivés",
+      "femPlur": "cultivées"
+    },
+    "épouser": {
+      "category": "verbe",
+      "present": {
+        "il": "épouse",
+        "ils": "épousent"
+      },
+      "imparfait": {
+        "il": "épousait",
+        "ils": "épousaient"
+      },
+      "futur": {
+        "il": "épousera",
+        "ils": "épouseront"
+      },
+      "passeCompose": "a épousé",
+      "participePasse": "épousé"
+    },
+    "Angleterre": {
+      "category": "nom propre"
+    },
+    "majeur": {
+      "category": "adjectif",
+      "femSing": "majeure",
+      "mascPlur": "majeurs",
+      "femPlur": "majeures"
+    },
+    "figure": {
+      "category": "nom",
+      "mascPlur": "figures"
+    },
+    "véritable": {
+      "category": "adjectif",
+      "femSing": "véritable",
+      "mascPlur": "véritables",
+      "femPlur": "véritables"
+    },
+    "soutenir": {
+      "category": "verbe",
+      "present": {
+        "il": "soutient",
+        "ils": "soutiennent",
+        "nous": "soutenons"
+      },
+      "imparfait": {
+        "il": "soutenait",
+        "ils": "soutenaient"
+      },
+      "futur": {
+        "il": "soutiendra",
+        "ils": "soutiendront"
+      },
+      "passeCompose": "a soutenu",
+      "participePasse": "soutenu"
+    },
+    "surnommer": {
+      "category": "verbe",
+      "present": {
+        "il": "surnomme",
+        "ils": "surnomment"
+      },
+      "imparfait": {
+        "il": "surnommait",
+        "ils": "surnommaient"
+      },
+      "futur": {
+        "il": "surnommera",
+        "ils": "surnommeront"
+      },
+      "passeCompose": "a surnommé",
+      "participePasse": "surnommé"
+    },
+    "s'entendre": {
+      "category": "verbe",
+      "present": {
+        "il": "s'entend",
+        "ils": "s'entendent",
+        "nous": "nous entendons"
+      },
+      "imparfait": {
+        "il": "s'entendait",
+        "ils": "s'entendaient"
+      },
+      "futur": {
+        "il": "s'entendra",
+        "ils": "s'entendront"
+      },
+      "passeCompose": "s'est entendu",
+      "participePasse": "entendu"
+    },
+    "mécène": {
+      "category": "nom",
+      "mascPlur": "mécènes"
+    },
+    "puissant": {
+      "category": "adjectif",
+      "femSing": "puissante",
+      "mascPlur": "puissants",
+      "femPlur": "puissantes"
+    },
+    "mari": {
+      "category": "nom",
+      "mascPlur": "maris"
+    },
+    "accord": {
+      "category": "nom",
+      "mascPlur": "accords"
+    },
+    "se poursuivre": {
+      "category": "verbe",
+      "present": {
+        "il": "se poursuit",
+        "ils": "se poursuivent"
+      },
+      "imparfait": {
+        "il": "se poursuivait",
+        "ils": "se poursuivaient"
+      },
+      "futur": {
+        "il": "se poursuivra",
+        "ils": "se poursuivront"
+      },
+      "passeCompose": "s'est poursuivi",
+      "participePasse": "poursuivi"
+    },
+    "assurer": {
+      "category": "verbe",
+      "present": {
+        "il": "assure",
+        "ils": "assurent",
+        "nous": "assurons"
+      },
+      "imparfait": {
+        "il": "assurait",
+        "ils": "assuraient"
+      },
+      "futur": {
+        "il": "assurera",
+        "ils": "assureront"
+      },
+      "passeCompose": "a assuré",
+      "participePasse": "assuré"
+    },
+    "s'efforcer": {
+      "category": "verbe",
+      "present": {
+        "il": "s'efforce",
+        "ils": "s'efforcent",
+        "nous": "nous efforçons"
+      },
+      "imparfait": {
+        "il": "s'efforçait",
+        "ils": "s'efforçaient"
+      },
+      "futur": {
+        "il": "s'efforcera",
+        "ils": "s'efforceront"
+      },
+      "passeCompose": "s'est efforcé",
+      "participePasse": "efforcé"
+    },
+    "protestant": {
+      "category": "nom / adjectif",
+      "femSing": "protestante",
+      "mascPlur": "protestants",
+      "femPlur": "protestantes"
+    },
+    "conflit": {
+      "category": "nom",
+      "mascPlur": "conflits"
+    },
+    "régence": {
+      "category": "nom",
+      "mascPlur": "régences"
+    },
+    "italien": {
+      "category": "nom / adjectif",
+      "femSing": "italienne",
+      "mascPlur": "italiens",
+      "femPlur": "italiennes"
+    },
+    "issu": {
+      "category": "adjectif",
+      "femSing": "issue",
+      "mascPlur": "issus",
+      "femPlur": "issues"
+    },
+    "religion": {
+      "category": "nom",
+      "mascPlur": "religions"
+    },
+    "devenir": {
+      "category": "verbe",
+      "present": {
+        "il": "devient",
+        "ils": "deviennent",
+        "nous": "devenons"
+      },
+      "imparfait": {
+        "il": "devenait",
+        "ils": "devenaient"
+      },
+      "futur": {
+        "il": "deviendra",
+        "ils": "deviendront"
+      },
+      "passeCompose": "est devenu / sont devenus",
+      "participePasse": "devenu"
+    },
+    "catholique": {
+      "category": "nom / adjectif",
+      "femSing": "catholique",
+      "mascPlur": "catholiques",
+      "femPlur": "catholiques"
+    },
+    "malheureusement": {
+      "category": "invariable"
+    },
+    "régner": {
+      "category": "verbe",
+      "present": {
+        "il": "règne",
+        "ils": "règnent",
+        "nous": "régnons"
+      },
+      "imparfait": {
+        "il": "régnait",
+        "ils": "régnaient"
+      },
+      "futur": {
+        "il": "régnera",
+        "ils": "régneront"
+      },
+      "passeCompose": "a régné",
+      "participePasse": "régné"
+    },
+    "nombreux": {
+      "category": "adjectif",
+      "femSing": "nombreuse",
+      "mascPlur": "nombreux",
+      "femPlur": "nombreuses"
+    },
+    "palais": {
+      "category": "nom",
+      "mascPlur": "palais",
+      "note": "Invariable au pluriel (-s)"
+    },
+    "rayonner": {
+      "category": "verbe",
+      "present": {
+        "il": "rayonne",
+        "ils": "rayonnent"
+      },
+      "imparfait": {
+        "il": "rayonnait",
+        "ils": "rayonnaient"
+      },
+      "futur": {
+        "il": "rayonnera",
+        "ils": "rayonneront"
+      },
+      "passeCompose": "a rayonné"
+    },
+    "guerre": {
+      "category": "nom",
+      "mascPlur": "guerres"
+    },
+    "absolu": {
+      "category": "adjectif",
+      "femSing": "absolue",
+      "mascPlur": "absolus",
+      "femPlur": "absolues"
+    },
+    "construire": {
+      "category": "verbe",
+      "present": {
+        "il": "construit",
+        "ils": "construisent"
+      },
+      "imparfait": {
+        "il": "construisait",
+        "ils": "construisaient"
+      },
+      "futur": {
+        "il": "construira",
+        "ils": "construiront"
+      },
+      "passeCompose": "a construit",
+      "participePasse": "construit"
+    },
+    "pouvoir": {
+      "category": "nom / verbe",
+      "mascPlur": "pouvoirs",
+      "present": {
+        "il": "peut",
+        "ils": "peuvent"
+      }
+    },
+    "Versailles": {
+      "category": "nom propre"
+    },
+    "monarque": {
+      "category": "nom",
+      "mascPlur": "monarques"
+    },
+    "Europe": {
+      "category": "nom propre"
+    },
+    "peuplé": {
+      "category": "adjectif",
+      "femSing": "peuplée",
+      "mascPlur": "peuplés",
+      "femPlur": "peuplées"
+    },
+    "s'installer": {
+      "category": "verbe",
+      "present": {
+        "il": "s'installe",
+        "ils": "s'installent"
+      },
+      "imparfait": {
+        "il": "s'installait",
+        "ils": "s'installaient"
+      },
+      "futur": {
+        "il": "s'installera",
+        "ils": "s'installeront"
+      },
+      "passeCompose": "s'est installé"
+    },
+    "Roi-Soleil": {
+      "category": "nom propre"
+    },
+    "somptueux": {
+      "category": "adjectif",
+      "femSing": "somptueuse",
+      "mascPlur": "somptueux",
+      "femPlur": "somptueuses"
+    },
+    "gouverner": {
+      "category": "verbe",
+      "present": {
+        "il": "gouverne",
+        "ils": "gouvernent"
+      },
+      "imparfait": {
+        "il": "gouvernait",
+        "ils": "gouvernaient"
+      },
+      "futur": {
+        "il": "gouvernera",
+        "ils": "gouverneront"
+      },
+      "passeCompose": "a gouverné"
+    },
+    "appauvrir": {
+      "category": "verbe",
+      "present": {
+        "il": "appauvrit",
+        "ils": "appauvrissent"
+      },
+      "imparfait": {
+        "il": "appauvrissait",
+        "ils": "appauvrissaient"
+      },
+      "futur": {
+        "il": "appauvrira",
+        "ils": "appauvriront"
+      },
+      "passeCompose": "a appauvri"
+    },
+    "empereur": {
+      "category": "nom",
+      "femSing": "impératrice",
+      "mascPlur": "empereurs",
+      "femPlur": "impératrices"
+    },
+    "français": {
+      "category": "adjectif / nom",
+      "femSing": "française",
+      "mascPlur": "français",
+      "femPlur": "françaises"
+    },
+    "maintenir": {
+      "category": "verbe",
+      "present": {
+        "il": "maintient",
+        "ils": "maintiennent"
+      },
+      "imparfait": {
+        "il": "maintenait",
+        "ils": "maintenaient"
+      },
+      "futur": {
+        "il": "maintiendra",
+        "ils": "maintiendront"
+      },
+      "passeCompose": "a maintenu"
+    },
+    "s'attribuer": {
+      "category": "verbe",
+      "present": {
+        "il": "s'attribue",
+        "ils": "s'attribuent"
+      }
+    },
+    "se déclarer": {
+      "category": "verbe",
+      "present": {
+        "il": "se déclare",
+        "ils": "se déclarent"
+      }
+    },
+    "Bonaparte": {
+      "category": "nom propre"
+    },
+    "révolution": {
+      "category": "nom",
+      "mascPlur": "révolutions"
+    },
+    "certains": {
+      "category": "adjectif / pronom",
+      "femSing": "certaine",
+      "mascPlur": "certains",
+      "femPlur": "certaines"
+    },
+    "consul": {
+      "category": "nom",
+      "mascPlur": "consuls"
+    },
+    "acquis": {
+      "category": "nom / adjectif",
+      "femSing": "acquise",
+      "mascPlur": "acquis",
+      "femPlur": "acquises"
+    },
+    "empire": {
+      "category": "nom",
+      "mascPlur": "empires"
+    },
+    "agrandir": {
+      "category": "verbe",
+      "present": {
+        "il": "agrandit",
+        "ils": "agrandissent"
+      },
+      "imparfait": {
+        "il": "agrandissait"
+      }
+    },
+    "Corse": {
+      "category": "nom propre"
+    },
+    "s'emparer": {
+      "category": "verbe",
+      "present": {
+        "il": "s'empare",
+        "ils": "s'emparent"
+      }
+    },
+    "sacrer": {
+      "category": "verbe",
+      "present": {
+        "il": "sacre",
+        "ils": "sacrent"
+      }
+    },
+    "naitre": {
+      "category": "verbe",
+      "present": {
+        "il": "naît",
+        "ils": "naissent"
+      },
+      "passeCompose": "est né"
+    },
+    "œuvre": {
+      "category": "nom",
+      "mascPlur": "œuvres"
+    },
+    "musée": {
+      "category": "nom",
+      "mascPlur": "musées"
+    },
+    "mécanique": {
+      "category": "adjectif / nom",
+      "femSing": "mécanique",
+      "mascPlur": "mécaniques",
+      "femPlur": "mécaniques"
+    },
+    "architecte": {
+      "category": "nom",
+      "mascPlur": "architectes"
+    },
+    "invention": {
+      "category": "nom",
+      "mascPlur": "inventions"
+    },
+    "conservé": {
+      "category": "adjectif",
+      "femSing": "conservée",
+      "mascPlur": "conservés",
+      "femPlur": "conservées"
+    },
+    "considéré": {
+      "category": "adjectif",
+      "femSing": "considérée",
+      "mascPlur": "considérés",
+      "femPlur": "considérées"
+    },
+    "créer": {
+      "category": "verbe",
+      "present": {
+        "il": "crée",
+        "ils": "créent"
+      },
+      "imparfait": {
+        "il": "créait"
+      },
+      "passeCompose": "a créé"
+    },
+    "concevoir": {
+      "category": "verbe",
+      "present": {
+        "il": "conçoit",
+        "ils": "conçoivent"
+      },
+      "imparfait": {
+        "il": "concevait"
+      }
+    },
+    "parmi": {
+      "category": "invariable"
+    },
+    "symbole": {
+      "category": "nom",
+      "mascPlur": "symboles"
+    },
+    "ébauche": {
+      "category": "nom",
+      "mascPlur": "ébauches"
+    },
+    "appareil": {
+      "category": "nom",
+      "mascPlur": "appareils"
+    },
+    "sculpteur": {
+      "category": "nom",
+      "femSing": "sculptrice",
+      "mascPlur": "sculpteurs",
+      "femPlur": "sculptrices"
+    },
+    "inventeur": {
+      "category": "nom",
+      "femSing": "inventrice",
+      "mascPlur": "inventeurs",
+      "femPlur": "inventrices"
+    },
+    "Renaissance": {
+      "category": "nom propre"
+    },
+    "difficile": {
+      "category": "adjectif",
+      "femSing": "difficile",
+      "mascPlur": "difficiles",
+      "femPlur": "difficiles"
+    },
+    "lorsque": {
+      "category": "invariable"
+    },
+    "morceau": {
+      "category": "nom",
+      "mascPlur": "morceaux"
+    },
+    "protection": {
+      "category": "nom",
+      "mascPlur": "protections"
+    },
+    "succès": {
+      "category": "nom",
+      "mascPlur": "succès"
+    },
+    "talent": {
+      "category": "nom",
+      "mascPlur": "talents"
+    },
+    "celui-ci": {
+      "category": "pronom",
+      "femSing": "celle-ci",
+      "mascPlur": "ceux-ci",
+      "femPlur": "celles-ci"
+    },
+    "apprendre": {
+      "category": "verbe",
+      "present": {
+        "il": "apprend",
+        "ils": "apprennent"
+      },
+      "imparfait": {
+        "il": "apprenait"
+      }
+    },
+    "ébloui": {
+      "category": "adjectif",
+      "femSing": "éblouie",
+      "mascPlur": "éblouis",
+      "femPlur": "éblouies"
+    },
+    "éclater": {
+      "category": "verbe",
+      "present": {
+        "il": "éclate",
+        "ils": "éclatent"
+      }
+    },
+    "composer": {
+      "category": "verbe",
+      "present": {
+        "il": "compose",
+        "ils": "composent"
+      },
+      "imparfait": {
+        "il": "composait"
+      }
+    },
+    "plusieurs": {
+      "category": "invariable"
+    },
+    "mourir": {
+      "category": "verbe",
+      "present": {
+        "il": "meurt",
+        "ils": "meurent"
+      },
+      "imparfait": {
+        "il": "mourait"
+      },
+      "passeCompose": "est mort"
+    },
+    "prodige": {
+      "category": "nom",
+      "mascPlur": "prodiges"
+    },
+    "Autriche": {
+      "category": "nom propre"
+    },
+    "peiner": {
+      "category": "verbe",
+      "present": {
+        "il": "peine",
+        "ils": "peinent"
+      }
+    },
+    "capable": {
+      "category": "adjectif",
+      "femSing": "capable",
+      "mascPlur": "capables",
+      "femPlur": "capables"
+    },
+    "mémoire": {
+      "category": "nom",
+      "mascPlur": "mémoires"
+    },
+    "pièce": {
+      "category": "nom",
+      "mascPlur": "pièces"
+    },
+    "femme": {
+      "category": "nom",
+      "mascPlur": "femmes"
+    },
+    "écrivain": {
+      "category": "nom",
+      "femSing": "écrivaine",
+      "mascPlur": "écrivains",
+      "femPlur": "écrivaines"
+    },
+    "ajouter": {
+      "category": "verbe",
+      "present": {
+        "il": "ajoute",
+        "ils": "ajoutent"
+      }
+    },
+    "théâtre": {
+      "category": "nom",
+      "mascPlur": "théâtres"
+    },
+    "plume": {
+      "category": "nom",
+      "mascPlur": "plumes"
+    },
+    "publier": {
+      "category": "verbe",
+      "present": {
+        "il": "publie",
+        "ils": "publient"
+      }
+    },
+    "romancier": {
+      "category": "nom",
+      "femSing": "romancière",
+      "mascPlur": "romanciers",
+      "femPlur": "romancières"
+    },
+    "politique": {
+      "category": "nom / adjectif",
+      "femSing": "politique",
+      "mascPlur": "politiques",
+      "femPlur": "politiques"
+    },
+    "artiste": {
+      "category": "nom",
+      "mascPlur": "artistes"
+    },
+    "rarement": {
+      "category": "invariable"
+    },
+    "écrit": {
+      "category": "nom / adjectif",
+      "femSing": "écrite",
+      "mascPlur": "écrits",
+      "femPlur": "écrites"
+    },
+    "gens": {
+      "category": "nom pluriel"
+    },
+    "spectateur": {
+      "category": "nom",
+      "femSing": "spectatrice",
+      "mascPlur": "spectateurs",
+      "femPlur": "spectatrices"
+    },
+    "liberté": {
+      "category": "nom",
+      "mascPlur": "libertés"
+    },
+    "subir": {
+      "category": "verbe",
+      "present": {
+        "il": "subit",
+        "ils": "subissent"
+      },
+      "imparfait": {
+        "il": "subissait"
+      }
+    },
+    "préjugé": {
+      "category": "nom",
+      "mascPlur": "préjugés"
+    },
+    "musical": {
+      "category": "adjectif",
+      "femSing": "musicale",
+      "mascPlur": "musicaux",
+      "femPlur": "musicales"
+    },
+    "racisme": {
+      "category": "nom"
+    },
+    "comédie": {
+      "category": "nom",
+      "mascPlur": "comédies"
+    },
+    "spectacle": {
+      "category": "nom",
+      "mascPlur": "spectacles"
+    },
+    "milieu": {
+      "category": "nom",
+      "mascPlur": "milieux"
+    },
+    "empêcher": {
+      "category": "verbe",
+      "present": {
+        "il": "empêche",
+        "ils": "empêchent"
+      }
+    },
+    "défendre": {
+      "category": "verbe",
+      "present": {
+        "il": "défend",
+        "ils": "défendent"
+      }
+    },
+    "famille": {
+      "category": "nom",
+      "mascPlur": "familles"
+    },
+    "combattre": {
+      "category": "verbe",
+      "present": {
+        "il": "combat",
+        "ils": "combattent"
+      },
+      "imparfait": {
+        "il": "combattait"
+      }
+    },
+    "ségrégation": {
+      "category": "nom"
+    },
+    "États-Unis": {
+      "category": "nom propre"
+    },
+    "s'étaler": {
+      "category": "verbe",
+      "present": {
+        "il": "s'étale",
+        "ils": "s'étalent"
+      }
+    },
+    "scandale": {
+      "category": "nom",
+      "mascPlur": "scandales"
+    },
+    "intitulé": {
+      "category": "adjectif",
+      "femSing": "intitulée",
+      "mascPlur": "intitulés",
+      "femPlur": "intitulées"
+    },
+    "panneau": {
+      "category": "nom",
+      "mascPlur": "panneaux"
+    },
+    "rempli": {
+      "category": "adjectif",
+      "femSing": "remplie",
+      "mascPlur": "remplis",
+      "femPlur": "remplies"
+    },
+    "injustice": {
+      "category": "nom",
+      "mascPlur": "injustices"
+    },
+    "blanc": {
+      "category": "adjectif",
+      "femSing": "blanche",
+      "mascPlur": "blancs",
+      "femPlur": "blanches"
+    },
+    "tableau": {
+      "category": "nom",
+      "mascPlur": "tableaux"
+    },
+    "plaque": {
+      "category": "nom",
+      "mascPlur": "plaques"
+    },
+    "carabine": {
+      "category": "nom",
+      "mascPlur": "carabines"
+    },
+    "siècle": {
+      "category": "nom",
+      "mascPlur": "siècles"
+    },
+    "tirer": {
+      "category": "verbe",
+      "present": {
+        "il": "tire",
+        "ils": "tirent"
+      }
+    },
+    "plâtre": {
+      "category": "nom"
+    },
+    "expliquer": {
+      "category": "verbe",
+      "present": {
+        "il": "explique",
+        "ils": "expliquent"
+      }
+    },
+    "attacher": {
+      "category": "verbe",
+      "present": {
+        "il": "attache",
+        "ils": "attachent"
+      }
+    },
+    "magique": {
+      "category": "adjectif",
+      "femSing": "magique",
+      "mascPlur": "magiques",
+      "femPlur": "magiques"
+    },
+    "Japon": {
+      "category": "nom propre"
+    },
+    "génial": {
+      "category": "adjectif",
+      "femSing": "géniale",
+      "mascPlur": "géniaux",
+      "femPlur": "géniales"
+    },
+    "héros": {
+      "category": "nom",
+      "femSing": "héroïne",
+      "mascPlur": "héros",
+      "femPlur": "héroïnes"
+    },
+    "parcours": {
+      "category": "nom",
+      "mascPlur": "parcours"
+    },
+    "manga": {
+      "category": "nom",
+      "mascPlur": "mangas"
+    },
+    "apparaître": {
+      "category": "verbe",
+      "present": {
+        "il": "apparaît",
+        "ils": "apparaissent"
+      }
+    },
+    "affronter": {
+      "category": "verbe",
+      "present": {
+        "il": "affronte",
+        "ils": "affrontent"
+      }
+    },
+    "légende": {
+      "category": "nom",
+      "mascPlur": "légendes"
+    },
+    "auteur": {
+      "category": "nom",
+      "femSing": "auteure / autrice",
+      "mascPlur": "auteurs",
+      "femPlur": "auteures"
+    },
+    "personnage": {
+      "category": "nom",
+      "mascPlur": "personnages"
+    },
+    "cristal": {
+      "category": "nom",
+      "mascPlur": "cristaux"
+    },
+    "queue": {
+      "category": "nom",
+      "mascPlur": "queues"
+    },
+    "adversaire": {
+      "category": "nom",
+      "mascPlur": "adversaires"
+    },
+    "accompagné": {
+      "category": "adjectif",
+      "femSing": "accompagnée",
+      "mascPlur": "accompagnés",
+      "femPlur": "accompagnées"
+    },
+    "exaucer": {
+      "category": "verbe",
+      "present": {
+        "il": "exauce",
+        "ils": "exaucent"
+      }
+    },
+    "central": {
+      "category": "adjectif",
+      "femSing": "centrale",
+      "mascPlur": "centraux",
+      "femPlur": "centrales"
+    },
+    "époque": {
+      "category": "nom",
+      "mascPlur": "époques"
+    },
+    "discipline": {
+      "category": "nom",
+      "mascPlur": "disciplines"
+    },
+    "fondateur": {
+      "category": "nom",
+      "femSing": "fondatrice",
+      "mascPlur": "fondateurs",
+      "femPlur": "fondatrices"
+    },
+    "médecine": {
+      "category": "nom"
+    },
+    "langage": {
+      "category": "nom",
+      "mascPlur": "langages"
+    },
+    "sorte": {
+      "category": "nom",
+      "mascPlur": "sortes"
+    },
+    "moderne": {
+      "category": "adjectif",
+      "femSing": "moderne",
+      "mascPlur": "modernes",
+      "femPlur": "modernes"
+    },
+    "ouvrage": {
+      "category": "nom",
+      "mascPlur": "ouvrages"
+    },
+    "astronomie": {
+      "category": "nom"
+    },
+    "mathématiques": {
+      "category": "nom pluriel"
+    },
+    "botanique": {
+      "category": "nom / adjectif"
+    },
+    "servir": {
+      "category": "verbe",
+      "present": {
+        "il": "sert",
+        "ils": "servent"
+      }
+    },
+    "scientifique": {
+      "category": "adjectif / nom",
+      "femSing": "scientifique",
+      "mascPlur": "scientifiques",
+      "femPlur": "scientifiques"
+    },
+    "enseignement": {
+      "category": "nom",
+      "mascPlur": "enseignements"
+    },
+    "physique": {
+      "category": "nom / adjectif"
+    },
+    "artisan": {
+      "category": "nom",
+      "femSing": "artisane",
+      "mascPlur": "artisans",
+      "femPlur": "artisanes"
+    },
+    "mobile": {
+      "category": "adjectif",
+      "femSing": "mobile",
+      "mascPlur": "mobiles",
+      "femPlur": "mobiles"
+    },
+    "exemplaire": {
+      "category": "nom / adjectif",
+      "mascPlur": "exemplaires"
+    },
+    "caractère": {
+      "category": "nom",
+      "mascPlur": "caractères"
+    },
+    "largement": {
+      "category": "invariable"
+    },
+    "allemand": {
+      "category": "adjectif / nom",
+      "femSing": "allemande",
+      "mascPlur": "allemands",
+      "femPlur": "allemandes"
+    },
+    "reproduire": {
+      "category": "verbe",
+      "present": {
+        "il": "reproduit",
+        "ils": "reproduisent"
+      }
+    },
+    "se diffuser": {
+      "category": "verbe",
+      "present": {
+        "il": "se diffuse",
+        "ils": "se diffusent"
+      }
+    },
+    "vivre": {
+      "category": "verbe",
+      "present": {
+        "il": "vit",
+        "ils": "vivent"
+      },
+      "imparfait": {
+        "il": "vivait"
+      }
+    },
+    "chaque": {
+      "category": "invariable"
+    },
+    "recopier": {
+      "category": "verbe",
+      "present": {
+        "il": "recopie",
+        "ils": "recopient"
+      }
+    },
+    "imprimerie": {
+      "category": "nom",
+      "mascPlur": "imprimeries"
+    },
+    "se répandre": {
+      "category": "verbe",
+      "present": {
+        "il": "se répand",
+        "ils": "se répandent"
+      }
+    },
+    "extrêmement": {
+      "category": "invariable"
+    },
+    "système": {
+      "category": "nom",
+      "mascPlur": "systèmes"
+    },
+    "prouver": {
+      "category": "verbe",
+      "present": {
+        "il": "prouve",
+        "ils": "prouvent"
+      },
+      "imparfait": {
+        "il": "prouvait"
+      }
+    },
+    "science": {
+      "category": "nom",
+      "mascPlur": "sciences"
+    },
+    "grâce à": {
+      "category": "invariable"
+    },
+    "savant": {
+      "category": "nom / adjectif",
+      "femSing": "savante",
+      "mascPlur": "savants",
+      "femPlur": "savantes"
+    },
+    "immobile": {
+      "category": "adjectif",
+      "femSing": "immobile",
+      "mascPlur": "immobiles",
+      "femPlur": "immobiles"
+    },
+    "instrument": {
+      "category": "nom",
+      "mascPlur": "instruments"
+    },
+    "lunette": {
+      "category": "nom",
+      "mascPlur": "lunettes"
+    },
+    "théorie": {
+      "category": "nom",
+      "mascPlur": "théories"
+    },
+    "se déplacer": {
+      "category": "verbe",
+      "present": {
+        "il": "se déplace",
+        "ils": "se déplacent"
+      }
+    },
+    "astronome": {
+      "category": "nom",
+      "mascPlur": "astronomes"
+    },
+    "jusque-là": {
+      "category": "invariable"
+    },
+    "autour de": {
+      "category": "invariable"
+    },
+    "physicien": {
+      "category": "nom",
+      "femSing": "physicienne",
+      "mascPlur": "physiciens",
+      "femPlur": "physiciennes"
+    },
+    "astronomique": {
+      "category": "adjectif",
+      "femSing": "astronomique",
+      "mascPlur": "astronomiques",
+      "femPlur": "astronomiques"
+    },
+    "expérimentation": {
+      "category": "nom",
+      "mascPlur": "expérimentations"
+    }
+  },
+  "variationSentences": {
+    "1": [
+      {
+        "sentence": "Les généraux romains ont vaincu les redoutables ennemis gaulois après de longs combats.",
+        "targetBase": "général",
+        "variation": "généraux",
+        "type": "Pluriel irrégulier (-aux)",
+        "hint": "général au pluriel"
+      },
+      {
+        "sentence": "Ces découvertes historiques constituent de précieuses sources pour comprendre la Gaule.",
+        "targetBase": "précieux",
+        "variation": "précieuses",
+        "type": "Féminin pluriel",
+        "hint": "précieux au féminin pluriel"
+      },
+      {
+        "sentence": "Après de longues luttes, plusieurs guerrières gauloises furent faites prisonnières.",
+        "targetBase": "prisonnier",
+        "variation": "prisonnières",
+        "type": "Féminin pluriel",
+        "hint": "prisonnier au féminin pluriel"
+      },
+      {
+        "sentence": "Les légions romaines remportent le triomphe et célèbrent de grandes victoires.",
+        "targetBase": "remporter",
+        "variation": "remportent",
+        "type": "Verbe au présent (3e p. pluriel)",
+        "hint": "remporter au présent avec 'les légions'"
+      },
+      {
+        "sentence": "Les troupes gauloises essuyaient de violentes attaques contre leurs remparts.",
+        "targetBase": "essuyer",
+        "variation": "essuyaient",
+        "type": "Verbe à l'imparfait (3e p. pluriel)",
+        "hint": "essuyer à l'imparfait avec 'les troupes'"
+      }
+    ],
+    "2": [
+      {
+        "sentence": "Les partisans fidèles de Clovis déjouent tous les complots dirigés contre le souverain.",
+        "targetBase": "partisan",
+        "variation": "partisans",
+        "type": "Masculin pluriel",
+        "hint": "partisan au pluriel"
+      },
+      {
+        "sentence": "Plusieurs provinces affaiblies par les guerres cherchaient refuge auprès de l'Église.",
+        "targetBase": "affaibli",
+        "variation": "affaiblies",
+        "type": "Féminin pluriel",
+        "hint": "affaibli au féminin pluriel"
+      },
+      {
+        "sentence": "Ces deux reines sont nées à l'époque où les anciennes dynasties s'affrontaient.",
+        "targetBase": "né",
+        "variation": "nées",
+        "type": "Féminin pluriel",
+        "hint": "né au féminin pluriel"
+      },
+      {
+        "sentence": "Pour obtenir la tutelle des terres, les chefs nouaient de solides alliances.",
+        "targetBase": "alliance",
+        "variation": "alliances",
+        "type": "Féminin pluriel",
+        "hint": "alliance au pluriel"
+      },
+      {
+        "sentence": "Les soldats souhaitaient voir leur jeune prince monter sur le trône de ses ancêtres.",
+        "targetBase": "souhaiter",
+        "variation": "souhaitaient",
+        "type": "Verbe à l'imparfait",
+        "hint": "souhaiter à l'imparfait avec 'les soldats'"
+      }
+    ],
+    "3": [
+      {
+        "sentence": "Cette femme d'exception était très cultivée et aimait s'entourer d'artistes de talent.",
+        "targetBase": "cultivé",
+        "variation": "cultivée",
+        "type": "Féminin singulier",
+        "hint": "cultivé au féminin"
+      },
+      {
+        "sentence": "Les poétesses et les musiciennes royales étaient invitées à chaque grande fête.",
+        "targetBase": "musicien",
+        "variation": "musiciennes",
+        "type": "Féminin pluriel",
+        "hint": "musicien au féminin pluriel"
+      },
+      {
+        "sentence": "Les conseillers soutenaient activement les décisions majeures de la nouvelle reine.",
+        "targetBase": "soutenir",
+        "variation": "soutenaient",
+        "type": "Verbe à l'imparfait",
+        "hint": "soutenir à l'imparfait avec 'les conseillers'"
+      },
+      {
+        "sentence": "Aliénor épousa ensuite le jeune souverain d'Angleterre lors d'une cérémonie fastueuse.",
+        "targetBase": "épouser",
+        "variation": "épousa",
+        "type": "Verbe au passé simple / passé",
+        "hint": "épouser au passé avec 'Aliénor'"
+      },
+      {
+        "sentence": "Ces deux illustres mécènes s'entendaient parfaitement pour protéger les lettres.",
+        "targetBase": "s'entendre",
+        "variation": "s'entendaient",
+        "type": "Verbe à l'imparfait (3e p. pluriel)",
+        "hint": "s'entendre à l'imparfait"
+      }
+    ],
+    "4": [
+      {
+        "sentence": "Au seizième siècle, plusieurs puissantes familles nobles se disputaient l'autorité.",
+        "targetBase": "puissant",
+        "variation": "puissantes",
+        "type": "Féminin pluriel",
+        "hint": "puissant au féminin pluriel"
+      },
+      {
+        "sentence": "La reine Catherine, d'origine italienne, assure avec fermeté la régence du royaume.",
+        "targetBase": "italien",
+        "variation": "italienne",
+        "type": "Féminin singulier",
+        "hint": "italien au féminin"
+      },
+      {
+        "sentence": "Les conflits entre catholiques et protestants se poursuivaient malgré les traités.",
+        "targetBase": "se poursuivre",
+        "variation": "se poursuivaient",
+        "type": "Verbe à l'imparfait",
+        "hint": "se poursuivre à l'imparfait avec 'les conflits'"
+      },
+      {
+        "sentence": "Le roi et ses ministres s'efforçaient d'établir des accords durables pour la paix.",
+        "targetBase": "s'efforcer",
+        "variation": "s'efforçaient",
+        "type": "Verbe à l'imparfait",
+        "hint": "s'efforcer à l'imparfait"
+      },
+      {
+        "sentence": "Henri IV régna avec sagesse et permit à ses sujets de devenir plus unis.",
+        "targetBase": "régner",
+        "variation": "régna",
+        "type": "Verbe au passé (3e p. singulier)",
+        "hint": "régner au passé avec 'Henri IV'"
+      }
+    ],
+    "5": [
+      {
+        "sentence": "De somptueuses galeries ornent les palais où rayonnent les richesses de France.",
+        "targetBase": "somptueux",
+        "variation": "somptueuses",
+        "type": "Féminin pluriel",
+        "hint": "somptueux au féminin pluriel"
+      },
+      {
+        "sentence": "Les monarques absolus d'Europe gouvernaient leurs sujets sans partage du pouvoir.",
+        "targetBase": "gouverner",
+        "variation": "gouvernaient",
+        "type": "Verbe à l'imparfait",
+        "hint": "gouverner à l'imparfait avec 'les monarques'"
+      },
+      {
+        "sentence": "De nombreuses villes peuplées se sont installées près du domaine royal.",
+        "targetBase": "peuplé",
+        "variation": "peuplées",
+        "type": "Féminin pluriel",
+        "hint": "peuplé au féminin pluriel"
+      },
+      {
+        "sentence": "Les lourdes guerres successives appauvrissaient dangereusement les caisses de l'État.",
+        "targetBase": "appauvrir",
+        "variation": "appauvrissaient",
+        "type": "Verbe à l'imparfait",
+        "hint": "appauvrir à l'imparfait avec 'les guerres'"
+      },
+      {
+        "sentence": "Les ouvriers construisaient jour et nuit les magnifiques fontaines de Versailles.",
+        "targetBase": "construire",
+        "variation": "construisaient",
+        "type": "Verbe à l'imparfait",
+        "hint": "construire à l'imparfait"
+      }
+    ],
+    "6": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "empereur",
+        "variation": "empereur",
+        "type": "Forme usuelle",
+        "hint": "forme de empereur"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "français",
+        "variation": "français",
+        "type": "Accord pluriel",
+        "hint": "accord de français"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "maintenir",
+        "variation": "maintenir",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de maintenir"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "s'attribuer",
+        "variation": "s'attribuer",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de s'attribuer"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "se déclarer",
+        "variation": "se déclarer",
+        "type": "Forme variée",
+        "hint": "variation de se déclarer"
+      }
+    ],
+    "7": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "œuvre",
+        "variation": "œuvre",
+        "type": "Forme usuelle",
+        "hint": "forme de œuvre"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "musée",
+        "variation": "musée",
+        "type": "Accord pluriel",
+        "hint": "accord de musée"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "mécanique",
+        "variation": "mécanique",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de mécanique"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "architecte",
+        "variation": "architecte",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de architecte"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "invention",
+        "variation": "invention",
+        "type": "Forme variée",
+        "hint": "variation de invention"
+      }
+    ],
+    "8": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "difficile",
+        "variation": "difficile",
+        "type": "Forme usuelle",
+        "hint": "forme de difficile"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "lorsque",
+        "variation": "lorsque",
+        "type": "Accord pluriel",
+        "hint": "accord de lorsque"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "morceau",
+        "variation": "morceau",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de morceau"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "protection",
+        "variation": "protection",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de protection"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "succès",
+        "variation": "succès",
+        "type": "Forme variée",
+        "hint": "variation de succès"
+      }
+    ],
+    "9": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "capable",
+        "variation": "capable",
+        "type": "Forme usuelle",
+        "hint": "forme de capable"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "mémoire",
+        "variation": "mémoire",
+        "type": "Accord pluriel",
+        "hint": "accord de mémoire"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "pièce",
+        "variation": "pièce",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de pièce"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "femme",
+        "variation": "femme",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de femme"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "véritable",
+        "variation": "véritable",
+        "type": "Forme variée",
+        "hint": "variation de véritable"
+      }
+    ],
+    "10": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "spectateur",
+        "variation": "spectateur",
+        "type": "Forme usuelle",
+        "hint": "forme de spectateur"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "liberté",
+        "variation": "liberté",
+        "type": "Accord pluriel",
+        "hint": "accord de liberté"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "subir",
+        "variation": "subir",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de subir"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "préjugé",
+        "variation": "préjugé",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de préjugé"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "musical",
+        "variation": "musical",
+        "type": "Forme variée",
+        "hint": "variation de musical"
+      }
+    ],
+    "11": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "s'étaler",
+        "variation": "s'étaler",
+        "type": "Forme usuelle",
+        "hint": "forme de s'étaler"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "scandale",
+        "variation": "scandale",
+        "type": "Accord pluriel",
+        "hint": "accord de scandale"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "intitulé",
+        "variation": "intitulé",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de intitulé"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "panneau",
+        "variation": "panneau",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de panneau"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "français",
+        "variation": "français",
+        "type": "Forme variée",
+        "hint": "variation de français"
+      }
+    ],
+    "12": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "magique",
+        "variation": "magique",
+        "type": "Forme usuelle",
+        "hint": "forme de magique"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "Japon",
+        "variation": "Japon",
+        "type": "Accord pluriel",
+        "hint": "accord de Japon"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "génial",
+        "variation": "génial",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de génial"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "héros",
+        "variation": "héros",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de héros"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "parcours",
+        "variation": "parcours",
+        "type": "Forme variée",
+        "hint": "variation de parcours"
+      }
+    ],
+    "13": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "central",
+        "variation": "central",
+        "type": "Forme usuelle",
+        "hint": "forme de central"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "époque",
+        "variation": "époque",
+        "type": "Accord pluriel",
+        "hint": "accord de époque"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "discipline",
+        "variation": "discipline",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de discipline"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "fondateur",
+        "variation": "fondateur",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de fondateur"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "médecine",
+        "variation": "médecine",
+        "type": "Forme variée",
+        "hint": "variation de médecine"
+      }
+    ],
+    "14": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "artisan",
+        "variation": "artisan",
+        "type": "Forme usuelle",
+        "hint": "forme de artisan"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "mobile",
+        "variation": "mobile",
+        "type": "Accord pluriel",
+        "hint": "accord de mobile"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "exemplaire",
+        "variation": "exemplaire",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de exemplaire"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "invention",
+        "variation": "invention",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de invention"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "caractère",
+        "variation": "caractère",
+        "type": "Forme variée",
+        "hint": "variation de caractère"
+      }
+    ],
+    "15": [
+      {
+        "sentence": "Dans cette époque mémorable, les différents spécialistes étudiaient chaque détail avec attention.",
+        "targetBase": "prouver",
+        "variation": "prouver",
+        "type": "Forme usuelle",
+        "hint": "forme de prouver"
+      },
+      {
+        "sentence": "De nombreuses découvertes majeures ont été réalisées pour enrichir notre savoir commun.",
+        "targetBase": "science",
+        "variation": "science",
+        "type": "Accord pluriel",
+        "hint": "accord de science"
+      },
+      {
+        "sentence": "Les acteurs de cet événement s'efforçaient de surmonter tous les obstacles rencontrés.",
+        "targetBase": "grâce à",
+        "variation": "grâce à",
+        "type": "Conjugaison imparfait",
+        "hint": "conjugaison de grâce à"
+      },
+      {
+        "sentence": "Ces créations admirables restent conservées comme des trésors de notre patrimoine.",
+        "targetBase": "savant",
+        "variation": "savant",
+        "type": "Accord féminin pluriel",
+        "hint": "accord de savant"
+      },
+      {
+        "sentence": "Chaque génération transmet avec fierté ces témoignages précieux à travers les siècles.",
+        "targetBase": "immobile",
+        "variation": "immobile",
+        "type": "Forme variée",
+        "hint": "variation de immobile"
+      }
+    ]
+  }
+}

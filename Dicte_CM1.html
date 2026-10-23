@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listes de mots - Dictées</title>
+  <style>
+    :root {
+      --bg-color: #f7f9fa;
+      --card-bg: #ffffff;
+      --header-bg: #3a3b3c;
+      --header-text: #ffffff;
+      --text-color: #222222;
+      --border-color: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1300px;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px 24px;
+    }
+
+    .dictee-block {
+      display: flex;
+      flex-direction: column;
+      break-inside: avoid;
+    }
+
+    .dictee-title {
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      width: fit-content;
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .word-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .word-item {
+      display: flex;
+      align-items: center;
+      font-size: 0.95rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .word-item label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .word-item input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 13px;
+      height: 13px;
+      border: 1.2px solid #555;
+      border-radius: 2px;
+      margin-right: 8px;
+      cursor: pointer;
+      display: inline-grid;
+      place-content: center;
+      transition: all 0.15s ease-in-out;
+      flex-shrink: 0;
+    }
+
+    .word-item input[type="checkbox"]:checked {
+      background-color: #2b74e2;
+      border-color: #2b74e2;
+    }
+
+    .word-item input[type="checkbox"]:checked::before {
+      content: "";
+      width: 4px;
+      height: 7px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      margin-bottom: 2px;
+    }
+
+    .word-item input[type="checkbox"]:checked + span {
+      color: #8c8c8c;
+      text-decoration: line-through;
+    }
+
+    /* Adaptação para telas menores */
+    @media (max-width: 1050px) {
+      .container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Otimizações para Impressão */
+    @media print {
+      body {
+        padding: 0;
+        background: transparent;
+      }
+
+      .container {
+        box-shadow: none;
+        padding: 10px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px 14px;
+      }
+
+      .dictee-title {
+        background-color: #000 !important;
+        color: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-size: 0.85rem;
+      }
+
+      .word-item {
+        font-size: 1rem;
+      }
+
+      .word-item input[type="checkbox"] {
+        border-color: #000;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 1</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>précieux</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>finalement</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>prisonnier</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>ennemi</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>résistance</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>triomphe</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>après</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>constituer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>vaincre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>remporter</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>essuyer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>historique</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>général</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>célèbre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>opposer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>témoignage</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 2</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>royaume</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>ensemble</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>affaibli</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>fuite</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>rencontrer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>né</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Rome</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Antiquité</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>dynastie</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>partisan</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>trône</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>alliance</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>complot</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>obtenir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>tutelle</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>souhaiter</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 3</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>royal</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>musicien</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>poète</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>troubadour</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>divorce</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Aquitaine</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>cultivé</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>épouser</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Angleterre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>majeur</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>figure</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>véritable</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>soutenir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>surnommer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>s'entendre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>mécène</span></label></li>
+      </ul>
+    </div>
+
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 4</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>puissant</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>mari</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>accord</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>se poursuivre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>assurer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>s'efforcer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>protestant</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>conflit</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>régence</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>italien</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>issu</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>religion</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>devenir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>catholique</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>malheureusement</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>régner</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 5</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>nombreux</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>palais</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>rayonner</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>guerre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>absolu</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>construire</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>pouvoir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Versailles</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>monarque</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Europe</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>peuplé</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>s'installer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Roi-Soleil</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>somptueux</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>gouverner</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>appauvrir</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 6</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>empereur</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>français</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>maintenir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>s'attribuer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>se déclarer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Bonaparte</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>révolution</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>certains</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>consul</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>acquis</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>empire</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>agrandir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Corse</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>s'emparer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>sacrer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>naitre</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 7</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>œuvre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>musée</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>mécanique</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>architecte</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>invention</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>conservé</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>considéré</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>créer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>concevoir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>parmi</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>symbole</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>ébauche</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>appareil</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>sculpteur</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>inventeur</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Renaissance</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 8</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>difficile</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>lorsque</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>morceau</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>protection</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>succès</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>talent</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>celui-ci</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>apprendre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>ébloui</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>éclater</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>composer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>plusieurs</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>mourir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>prodige</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Autriche</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>peiner</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 9</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>capable</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>mémoire</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>pièce</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>femme</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>véritable</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>écrivain</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>ajouter</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>théâtre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>plume</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>publier</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>romancier</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>politique</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>artiste</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>rarement</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>écrit</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>gens</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 10</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>spectateur</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>liberté</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>subir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>préjugé</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>musical</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>racisme</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>célèbre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>comédie</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>spectacle</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>milieu</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>empêcher</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>défendre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>famille</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>combattre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>ségrégation</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>États-Unis</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 11</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>s'étaler</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>scandale</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>intitulé</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>panneau</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>français</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>rempli</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>injustice</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>blanc</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>tableau</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>plaque</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>carabine</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>siècle</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>tirer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>plâtre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>expliquer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>attacher</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 12</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>magique</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>Japon</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>génial</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>héros</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>parcours</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>manga</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>apparaître</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>affronter</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>légende</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>auteur</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>personnage</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>cristal</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>queue</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>adversaire</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>accompagné</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>exaucer</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 13</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>central</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>époque</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>discipline</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>fondateur</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>médecine</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>langage</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>sorte</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>moderne</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>ouvrage</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>astronomie</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>mathématiques</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>botanique</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>servir</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>scientifique</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>enseignement</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>physique</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 14</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>artisan</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>mobile</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>exemplaire</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>invention</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>caractère</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>largement</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>allemand</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>reproduire</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>se diffuser</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>vivre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>chaque</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>recopier</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>imprimerie</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>se répandre</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>extrêmement</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>système</span></label></li>
+      </ul>
+    </div>
+    
+    <div class="dictee-block">
+      <div class="dictee-title">Dictée 15</div>
+      <ul class="word-list">
+        <li class="word-item"><label><input type="checkbox"><span>prouver</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>science</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>grâce à</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>savant</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>immobile</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>italien</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>instrument</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>lunette</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>théorie</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>se déplacer</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>astronome</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>jusque-là</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>autour de</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>physicien</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>astronomique</span></label></li>
+        <li class="word-item"><label><input type="checkbox"><span>expérimentation</span></label></li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

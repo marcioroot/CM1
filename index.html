@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Espace CM1 – Dictées, Orthographe & Révisions</title>
+  <meta name="description" content="Plateforme d'entraînement ludique et interactive pour les élèves de CM1 : dictées, vocabulaire, récits thématiques, grammaire, conjugaison et calcul mental.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Confetti Canvas for Celebratory Animations -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Main Application Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <div class="brand-logo" title="Mon Espace CM1">🎒</div>
+        <div class="brand-text">
+          <h1>Mon Espace CM1 <span class="brand-badge">Cycle 3</span></h1>
+          <p class="brand-subtext">Cahier d'entraînement interactif & Dictées d'Histoire des Arts</p>
+        </div>
+      </div>
+
+      <!-- Gamified Progress Bar -->
+      <div class="user-stats-bar">
+        <div class="stat-pill stars" title="Étoiles gagnées">
+          <span>⭐</span>
+          <span id="userStars">25</span>
+        </div>
+        <div class="stat-pill streak" title="Jours consécutifs d'entraînement">
+          <span>🔥</span>
+          <span id="userStreak">1 j</span>
+        </div>
+        <div class="stat-pill level" title="Niveau actuel">
+          <span>🏅</span>
+          <span id="userLevel">Apprenti</span>
+        </div>
+        <button id="soundToggleBtn" class="sound-toggle-btn" type="button" title="Activer ou désactiver les effets sonores">
+          🔊 Son Actif
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Subject Navigation Tabs -->
+  <nav class="main-nav" aria-label="Navigation principale">
+    <div class="nav-container">
+      <button class="nav-tab-btn active" data-target="sectionDictee" id="tabDictee">
+        <span>📖</span> Dictée & Vocabulaire
+      </button>
+      <button class="nav-tab-btn" data-target="sectionConjugaison" id="tabConjugaison">
+        <span>🖋️</span> Conjugaison CM1
+      </button>
+      <button class="nav-tab-btn" data-target="sectionGrammaire" id="tabGrammaire">
+        <span>📚</span> Grammaire & Accords
+      </button>
+      <button class="nav-tab-btn" data-target="sectionMaths" id="tabMaths">
+        <span>📐</span> Calcul Mental Express
+      </button>
+      <button class="nav-tab-btn" data-target="sectionTrophees" id="tabTrophees">
+        <span>🏆</span> Mes Trophées
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- ========================================================
+         TAB 1: DICTÉE & VOCABULAIRE (Core Feature)
+         ======================================================== -->
+    <section id="sectionDictee" class="tab-section active">
+
+      <!-- Dictée Selection Card -->
+      <div class="selector-card">
+        <div class="selector-header">
+          <div class="selector-title-group">
+            <h2><span>🎯</span> Choisis ta liste de dictée à réviser</h2>
+            <p>Sélectionne une dictée : les mots déjà appris dans les listes précédentes sont automatiquement réinvestis !</p>
+          </div>
+          <div class="dictee-dropdown-wrapper">
+            <label for="dicteeSelect" style="font-weight: 700; font-size: 0.95rem; color: #475569;">Liste :</label>
+            <select id="dicteeSelect" class="dictee-select" aria-label="Sélectionner une dictée">
+              <!-- Dynamically populated from data.js -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Carousel chips for fast jumping -->
+        <div class="dictee-chips-wrapper" id="dicteeChips">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Selected Dictée Hero Banner -->
+        <div class="dictee-hero-banner" id="dicteeHeroBanner">
+          <div class="banner-main">
+            <div class="banner-icon" id="bannerIcon">⚔️</div>
+            <div class="banner-info">
+              <h3 id="bannerTitle">Dictée 1 : Vercingétorix et Jules César</h3>
+              <div class="banner-meta">
+                <span class="period-badge" id="bannerBadge">Antiquité</span>
+                <span class="words-count-badge" id="bannerWordsCount">16 mots cibles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prior Mastered Vocabulary Alert (e.g. Dictée 4 incorporates Dictée 1, 2, 3) -->
+        <div class="prior-vocab-box" id="priorVocabBox" style="display: none;">
+          <div class="prior-icon">💡</div>
+          <div class="prior-content" style="flex-grow: 1;">
+            <h4>Vocabulaire acquis réinvesti !</h4>
+            <p id="priorCountText">
+              Tu as déjà maîtrisé les mots des listes précédentes. Ces mots sont réutilisés dans les textes et exercices pour assurer une révision continue.
+            </p>
+            <label class="toggle-prior-wrapper">
+              <input type="checkbox" id="priorVocabToggle" checked>
+              <span>Intégrer les mots des dictées précédentes dans les exercices (clique pour dérouler la liste)</span>
+            </label>
+            <div class="prior-words-pill-list" id="priorWordsPills">
+              <!-- Populated with previous words -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Words List of the Selected Dictée -->
+        <div class="words-card-section">
+          <div class="section-subtitle">
+            <span>📝 Mots de la liste à étudier (coche les mots que tu sais déjà écrire) :</span>
+          </div>
+          <div class="words-grid" id="wordsGrid">
+            <!-- Populated with target word cards -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           Interactive Generator & Practice Workspace
+           ======================================================== -->
+      <div class="generator-workspace">
+
+        <!-- Top ToolBar -->
+        <div class="generator-topbar">
+          <div class="mode-switches">
+            <button class="mode-switch-btn active" data-mode="story" id="modeStoryBtn">
+              <span>📖</span> Récit Thématique
+            </button>
+            <button class="mode-switch-btn" data-mode="sentences" id="modeSentencesBtn">
+              <span>✍️</span> Phrases Clés
+            </button>
+            <button class="mode-switch-btn" data-mode="dynamic" id="modeDynamicBtn">
+              <span>🎲</span> Mode Dynamique
+            </button>
+            <button class="mode-switch-btn" data-mode="variations" id="modeVariationsBtn">
+              <span>✨</span> Mode Variations
+            </button>
+          </div>
+
+          <div class="action-buttons-group">
+            <label class="variations-toggle-label" title="Activer les formes au féminin, au pluriel et les verbes conjugués dans tous les textes">
+              <input type="checkbox" id="variationsToggle" checked>
+              <span>Accords & Conjugaisons</span>
+            </label>
+            <button class="btn-primary" id="generateNewTextBtn" type="button" title="Créer un nouveau texte combinant les mots cibles et révisés">
+              <span>✨</span> Générer un autre texte
+            </button>
+            <button class="btn-secondary" id="speakAllBtn" type="button" title="Écouter la lecture à voix haute">
+              <span>🔊</span> Tout écouter
+            </button>
+            <button class="btn-secondary" id="speakSlowBtn" type="button" title="Lecture lente pour s'entraîner à la dictée">
+              <span>🐌</span> Vitesse lente
+            </button>
+            <button class="btn-secondary" id="printWorksheetBtn" type="button" title="Imprimer la fiche d'exercice pour travailler sur papier">
+              <span>🖨️</span> Imprimer
+            </button>
+          </div>
+        </div>
+
+        <!-- Practice Sub-Tabs Navigation -->
+        <div class="practice-tabs-bar">
+          <button class="subtab-btn active" data-view="viewDiscovery" id="subtabDiscovery">
+            <span>🎧</span> 1. Découverte & Écoute
+          </button>
+          <button class="subtab-btn" data-view="viewCloze" id="subtabCloze">
+            <span>📝</span> 2. Dictée à trous
+          </button>
+          <button class="subtab-btn" data-view="viewNotebook" id="subtabNotebook">
+            <span>📜</span> 3. Cahier d'écriture Seyès
+          </button>
+          <button class="subtab-btn" data-view="viewGame" id="subtabGame">
+            <span>🧩</span> 4. Mot Mystère (Anagramme)
+          </button>
+          <button class="subtab-btn" data-view="viewVariations" id="subtabVariations">
+            <span>✨</span> 5. Atelier des Variations
+          </button>
+        </div>
+
+        <!-- Main Content Area with Sub-Views -->
+        <div class="generator-content-area">
+
+          <!-- View 1: Discovery & Speech Playback -->
+          <div id="viewDiscovery" class="practice-view active">
+            <div class="words-legend-bar">
+              <span class="legend-item">
+                <span class="badge-target-word">mot cible</span> = Nouveau mot de la dictée
+              </span>
+              <span class="legend-item">
+                <span class="badge-target-word badge-variation">mot varié <small class="var-tag">var.</small></span> = Forme accordée / conjuguée
+              </span>
+              <span class="legend-item">
+                <span class="badge-prior-word">mot révisé</span> = Mot des dictées précédentes
+              </span>
+              <span style="margin-left: auto; font-style: italic; font-weight: 600;">
+                💡 Astuce : Clique sur n'importe quel mot surligné pour entendre sa prononciation !
+              </span>
+            </div>
+
+            <div id="discoveryTextContainer">
+              <!-- Dynamically populated with story or sentences -->
+            </div>
+          </div>
+
+          <!-- View 2: Fill-in-the-blanks (Dictée à trous) -->
+          <div id="viewCloze" class="practice-view">
+            <div class="cloze-instructions">
+              <span>✍️ <strong>Consigne :</strong> Complète les phrases avec la bonne orthographe des mots cibles. Fais bien attention aux accents !</span>
+              <button class="btn-success" id="verifyClozeBtn" type="button">
+                <span>✓</span> Vérifier mes réponses
+              </button>
+            </div>
+
+            <div id="clozeExerciseContainer" class="cloze-container">
+              <!-- Dynamically populated inputs -->
+            </div>
+
+            <div id="clozeFeedbackBar" class="cloze-feedback-bar">
+              <!-- Feedback on answers -->
+            </div>
+          </div>
+
+          <!-- View 3: Seyès Ruled Notebook Audio Dictation -->
+          <div id="viewNotebook" class="practice-view">
+            <div class="notebook-container">
+              <div class="notebook-audio-bar">
+                <div class="sentence-step-label" id="notebookStepLabel">
+                  Phrase 1 sur 5
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn-primary" id="playNotebookAudioBtn" type="button">
+                    <span>🔊</span> Écouter la phrase
+                  </button>
+                  <button class="btn-secondary" id="playNotebookSlowBtn" type="button">
+                    <span>🐌</span> Écouter lentement
+                  </button>
+                </div>
+              </div>
+
+              <div class="seyes-textarea-wrapper">
+                <label for="seyesTextarea" style="display: block; font-weight: 700; margin-bottom: 8px; color: #4338ca;">
+                  Ton cahier d'écriture (écoute la phrase et écris-la ici) :
+                </label>
+                <textarea id="seyesTextarea" class="seyes-textarea" placeholder="Écris ta dictée ici sur les lignes de ton cahier..." autocomplete="off" spellcheck="false"></textarea>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn-success" id="verifyNotebookBtn" type="button">
+                  <span>✓</span> Vérifier ma dictée
+                </button>
+              </div>
+
+              <div id="dictationDiffResult" class="dictation-diff-result">
+                <!-- Diff inspection result -->
+              </div>
+            </div>
+          </div>
+
+          <!-- View 4: Word Game (Anagramme / Mot Mystère) -->
+          <div id="viewGame" class="practice-view">
+            <div class="game-container">
+              <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #4338ca; margin-bottom: 6px;">
+                🧩 Le Mot Mystère de la Dictée
+              </h3>
+              <p style="color: #64748b; font-weight: 600;" id="gameHint">
+                Remets les lettres dans le bon ordre pour retrouver le mot :
+              </p>
+
+              <div class="scrambled-letters-box" id="scrambledLettersBox">
+                <!-- Clickable letter tiles -->
+              </div>
+
+              <label for="gameInput" class="sr-only" style="display:none;">Mot mystère</label>
+              <input type="text" id="gameInput" class="game-input" placeholder="Tape le mot ici..." autocomplete="off">
+
+              <div style="display: flex; justify-content: center; gap: 10px;">
+                <button class="btn-success" type="button" onclick="window.cm1App.verifyGameWord()">
+                  <span>✓</span> Valider le mot
+                </button>
+                <button class="btn-secondary" type="button" onclick="window.cm1App.setupWordGame()">
+                  <span>🔄</span> Nouveau mot
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- View 5: Grammatical Variations Workshop (Atelier des Variations) -->
+          <div id="viewVariations" class="practice-view">
+            <div class="workshop-container">
+              <div class="workshop-header">
+                <div>
+                  <h3><span>✨</span> L'Atelier des Variations (Genre, Nombre & Conjugaisons)</h3>
+                  <p>Pratique la transformation des mots de la liste : passe du masculin au féminin, du singulier au pluriel, et conjugue les verbes aux temps du CM1 !</p>
+                </div>
+                <button class="btn-primary" type="button" onclick="window.cm1App.renderVariationsWorkshop()">
+                  <span>🔄</span> Nouveaux défis
+                </button>
+              </div>
+
+              <div class="workshop-drills-grid" id="workshopDrillsGrid">
+                <!-- Dynamically populated with interactive drill cards -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         TAB 2: CONJUGAISON CM1
+         ======================================================== -->
+    <section id="sectionConjugaison" class="tab-section">
+      <div class="selector-card" style="margin-bottom: 24px;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 6px;">
+          🖋️ Entraînement à la Conjugaison du CM1
+        </h2>
+        <p style="color: var(--text-muted);">
+          Révise les temps essentiels du programme de CM1 : le Présent, l'Imparfait et le Futur simple.
+        </p>
+      </div>
+
+      <div class="module-grid" id="conjugationModuleContainer">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================
+         TAB 3: GRAMMAIRE & ACCORDS
+         ======================================================== -->
+    <section id="sectionGrammaire" class="tab-section">
+      <div class="selector-card" style="margin-bottom: 24px;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 6px;">
+          📚 Grammaire : Nature des mots & Accords
+        </h2>
+        <p style="color: var(--text-muted);">
+          Apprends à repérer le verbe, le nom, l'adjectif qualificatif et à réussir les accords en genre et en nombre.
+        </p>
+      </div>
+
+      <div class="module-grid" id="grammarModuleContainer">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================
+         TAB 4: CALCUL MENTAL EXPRESS
+         ======================================================== -->
+    <section id="sectionMaths" class="tab-section">
+      <div class="selector-card" style="margin-bottom: 24px;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 6px;">
+          📐 Calcul Mental Express & Défis CM1
+        </h2>
+        <p style="color: var(--text-muted);">
+          Multiplications rapides, grands nombres, doubles et moitiés pour devenir un as des mathématiques !
+        </p>
+      </div>
+
+      <div id="mathModuleContainer">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================================
+         TAB 5: MES TROPHÉES
+         ======================================================== -->
+    <section id="sectionTrophees" class="tab-section">
+      <div class="selector-card" style="margin-bottom: 24px;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 6px;">
+          🏆 Mes Trophées & Récompenses
+        </h2>
+        <p style="color: var(--text-muted);">
+          Gagne des étoiles en réussissant tes dictées et tes exercices pour débloquer tous les badges du CM1 !
+        </p>
+      </div>
+
+      <div class="trophies-grid" id="trophiesContainer">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Load Data and Application Controller -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
