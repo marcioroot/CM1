@@ -701,10 +701,43 @@ body {
   transition: all 0.2s;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover:not(:disabled) {
   background: #f1f5f9;
   border-color: #94a3b8;
   transform: translateY(-1px);
+}
+
+.btn-secondary:disabled,
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-secondary.is-speaking {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+  animation: pulse-border 1.5s infinite alternate;
+}
+
+.btn-secondary.is-paused {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #b45309;
+}
+
+@keyframes pulse-border {
+  from {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  to {
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  }
 }
 
 .btn-success {

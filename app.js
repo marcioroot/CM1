@@ -204,6 +204,16 @@ class CM1App {
     // French speech synthesis voice selection
     this.frenchVoice = null;
     this.initVoices();
+
+    // Speech synthesis reading state
+    this.speechState = 'idle'; // 'idle' | 'playing' | 'paused'
+    this.currentSpeechMode = null; // 'normal' | 'slow'
+    this.currentSpeechRate = 0.9;
+    this.fullSpeechText = '';
+    this.speechBaseCharOffset = 0;
+    this.speechCharIndex = 0;
+    this.currentUtterance = null;
+    this.keepAliveInterval = null;
   }
 
   loadStats() {
@@ -258,9 +268,22 @@ class CM1App {
     }
   }
 
+  getCurrentDicteeText() {
+    const dictee = this.getCurrentDictee();
+    if (!dictee) return "";
+    if (this.generationMode === 'story') {
+      return dictee.story;
+    } else if (this.generationMode === 'variations') {
+      return this.getVariationSentences().map(item => item.sentence).join(' ');
+    } else {
+      return dictee.sentences.join(' ');
+    }
+  }
+
+  // Short one-off speech for individual words or sentences
   speak(text, rate = 0.95) {
     if (!('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
+    this.stopSpeech();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'fr-FR';
     if (this.frenchVoice) {
@@ -268,7 +291,249 @@ class CM1App {
     }
     utterance.rate = rate;
     utterance.pitch = 1.05;
+    this.currentUtterance = utterance;
+    window._cm1_utterance = utterance;
     window.speechSynthesis.speak(utterance);
+  }
+
+  // Full-text continuous reading with pause and resume support
+  startReading(text, rate = 0.9, mode = 'normal') {
+    if (!('speechSynthesis' in window) || !text) return;
+    this.stopSpeech();
+
+    this.speechState = 'playing';
+    this.currentSpeechMode = mode;
+    this.currentSpeechRate = rate;
+    this.fullSpeechText = text;
+    this.speechBaseCharOffset = 0;
+    this.speechCharIndex = 0;
+
+    this.speakTextSegment(text, rate, mode);
+    this.updateSpeechControlsUI();
+  }
+
+  speakTextSegment(text, rate, mode) {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'fr-FR';
+    if (this.frenchVoice) {
+      utterance.voice = this.frenchVoice;
+    }
+    utterance.rate = rate;
+    utterance.pitch = 1.05;
+
+    utterance.onboundary = (e) => {
+      if (e && typeof e.charIndex === 'number') {
+        this.speechCharIndex = e.charIndex;
+      }
+    };
+
+    utterance.onend = () => {
+      if (this.speechState === 'playing') {
+        this.resetSpeechControls();
+      }
+    };
+
+    utterance.onerror = (e) => {
+      if (e.error !== 'interrupted' && e.error !== 'canceled') {
+        console.warn('SpeechSynthesis error:', e);
+        this.resetSpeechControls();
+      }
+    };
+
+    this.currentUtterance = utterance;
+    window._cm1_utterance = utterance;
+
+    window.speechSynthesis.speak(utterance);
+    this.startKeepAlive();
+  }
+
+  pauseReading() {
+    if (!('speechSynthesis' in window)) return;
+    if (this.speechState !== 'playing') return;
+
+    this.speechState = 'paused';
+    this.stopKeepAlive();
+    window.speechSynthesis.pause();
+    this.updateSpeechControlsUI();
+  }
+
+  resumeReading() {
+    if (!('speechSynthesis' in window)) return;
+    if (this.speechState !== 'paused') return;
+
+    this.speechState = 'playing';
+    this.updateSpeechControlsUI();
+    this.startKeepAlive();
+
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      setTimeout(() => {
+        if (this.speechState === 'playing') {
+          if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+          } else if (!window.speechSynthesis.speaking) {
+            this.resumeFromRemainingText();
+          }
+        }
+      }, 150);
+    } else if (!window.speechSynthesis.speaking) {
+      this.resumeFromRemainingText();
+    }
+  }
+
+  resumeFromRemainingText() {
+    const resumeIndex = this.speechBaseCharOffset + this.speechCharIndex;
+    this.speechBaseCharOffset = resumeIndex;
+    this.speechCharIndex = 0;
+    const remainingText = this.fullSpeechText ? this.fullSpeechText.slice(resumeIndex).trim() : '';
+
+    if (remainingText) {
+      this.speakTextSegment(remainingText, this.currentSpeechRate, this.currentSpeechMode);
+    } else {
+      this.resetSpeechControls();
+    }
+  }
+
+  stopSpeech() {
+    this.stopKeepAlive();
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    this.resetSpeechControls();
+  }
+
+  resetSpeechControls() {
+    this.stopKeepAlive();
+    this.speechState = 'idle';
+    this.currentSpeechMode = null;
+    this.speechBaseCharOffset = 0;
+    this.speechCharIndex = 0;
+    this.currentUtterance = null;
+    this.updateSpeechControlsUI();
+  }
+
+  startKeepAlive() {
+    this.stopKeepAlive();
+    this.keepAliveInterval = setInterval(() => {
+      if (this.speechState === 'playing' && 'speechSynthesis' in window && window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }
+    }, 10000);
+  }
+
+  stopKeepAlive() {
+    if (this.keepAliveInterval) {
+      clearInterval(this.keepAliveInterval);
+      this.keepAliveInterval = null;
+    }
+  }
+
+  updateSpeechControlsUI() {
+    const speakAllBtn = document.getElementById('speakAllBtn');
+    const speakSlowBtn = document.getElementById('speakSlowBtn');
+    const pauseSpeechBtn = document.getElementById('pauseSpeechBtn');
+    const stopSpeechBtn = document.getElementById('stopSpeechBtn');
+
+    if (this.speechState === 'playing') {
+      if (this.currentSpeechMode === 'normal') {
+        if (speakAllBtn) {
+          speakAllBtn.innerHTML = '<span>⏸️</span> Pause';
+          speakAllBtn.title = 'Mettre en pause la lecture';
+          speakAllBtn.classList.add('is-speaking');
+          speakAllBtn.classList.remove('is-paused');
+        }
+        if (speakSlowBtn) {
+          speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
+          speakSlowBtn.title = 'Passer en lecture lente';
+          speakSlowBtn.classList.remove('is-speaking', 'is-paused');
+        }
+      } else {
+        if (speakSlowBtn) {
+          speakSlowBtn.innerHTML = '<span>⏸️</span> Pause';
+          speakSlowBtn.title = 'Mettre en pause la lecture lente';
+          speakSlowBtn.classList.add('is-speaking');
+          speakSlowBtn.classList.remove('is-paused');
+        }
+        if (speakAllBtn) {
+          speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
+          speakAllBtn.title = 'Passer en vitesse normale';
+          speakAllBtn.classList.remove('is-speaking', 'is-paused');
+        }
+      }
+
+      if (pauseSpeechBtn) {
+        pauseSpeechBtn.innerHTML = '<span>⏸️</span> Pause';
+        pauseSpeechBtn.title = 'Mettre en pause la lecture';
+        pauseSpeechBtn.disabled = false;
+        pauseSpeechBtn.classList.add('is-speaking');
+        pauseSpeechBtn.classList.remove('is-paused');
+      }
+      if (stopSpeechBtn) {
+        stopSpeechBtn.disabled = false;
+      }
+    } else if (this.speechState === 'paused') {
+      if (this.currentSpeechMode === 'normal') {
+        if (speakAllBtn) {
+          speakAllBtn.innerHTML = '<span>▶️</span> Reprendre';
+          speakAllBtn.title = 'Reprendre la lecture de la dictée';
+          speakAllBtn.classList.add('is-paused');
+          speakAllBtn.classList.remove('is-speaking');
+        }
+        if (speakSlowBtn) {
+          speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
+          speakSlowBtn.title = 'Lecture lente pour s\'entraîner à la dictée';
+          speakSlowBtn.classList.remove('is-speaking', 'is-paused');
+        }
+      } else {
+        if (speakSlowBtn) {
+          speakSlowBtn.innerHTML = '<span>▶️</span> Reprendre';
+          speakSlowBtn.title = 'Reprendre la lecture lente';
+          speakSlowBtn.classList.add('is-paused');
+          speakSlowBtn.classList.remove('is-speaking');
+        }
+        if (speakAllBtn) {
+          speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
+          speakAllBtn.title = 'Écouter la lecture à voix haute';
+          speakAllBtn.classList.remove('is-speaking', 'is-paused');
+        }
+      }
+
+      if (pauseSpeechBtn) {
+        pauseSpeechBtn.innerHTML = '<span>▶️</span> Reprendre';
+        pauseSpeechBtn.title = 'Reprendre la lecture de la dictée';
+        pauseSpeechBtn.disabled = false;
+        pauseSpeechBtn.classList.add('is-paused');
+        pauseSpeechBtn.classList.remove('is-speaking');
+      }
+      if (stopSpeechBtn) {
+        stopSpeechBtn.disabled = false;
+      }
+    } else {
+      // Idle state
+      if (speakAllBtn) {
+        speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
+        speakAllBtn.title = 'Écouter la lecture à voix haute';
+        speakAllBtn.classList.remove('is-speaking', 'is-paused');
+      }
+      if (speakSlowBtn) {
+        speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
+        speakSlowBtn.title = 'Lecture lente pour s\'entraîner à la dictée';
+        speakSlowBtn.classList.remove('is-speaking', 'is-paused');
+      }
+      if (pauseSpeechBtn) {
+        pauseSpeechBtn.innerHTML = '<span>⏸️</span> Pause';
+        pauseSpeechBtn.title = 'Mettre en pause ou reprendre la lecture';
+        pauseSpeechBtn.disabled = true;
+        pauseSpeechBtn.classList.remove('is-speaking', 'is-paused');
+      }
+      if (stopSpeechBtn) {
+        stopSpeechBtn.disabled = true;
+      }
+    }
   }
 
   init() {
@@ -333,6 +598,7 @@ class CM1App {
   }
 
   selectDictee(id) {
+    this.stopSpeech();
     this.selectedDicteeId = id;
     const selectEl = document.getElementById('dicteeSelect');
     if (selectEl) selectEl.value = id;
@@ -516,6 +782,7 @@ class CM1App {
   }
 
   renderGeneratedContent() {
+    this.stopSpeech();
     const dictee = this.getCurrentDictee();
     const priorWords = this.getPriorWords();
 
@@ -1335,32 +1602,66 @@ class CM1App {
     const speakAllBtn = document.getElementById('speakAllBtn');
     if (speakAllBtn) {
       speakAllBtn.addEventListener('click', () => {
-        const dictee = this.getCurrentDictee();
-        let textToRead = "";
-        if (this.generationMode === 'story') {
-          textToRead = dictee.story;
-        } else if (this.generationMode === 'variations') {
-          textToRead = this.getVariationSentences().map(item => item.sentence).join(' ');
+        if (this.speechState === 'playing') {
+          if (this.currentSpeechMode === 'normal') {
+            this.pauseReading();
+          } else {
+            const textToRead = this.getCurrentDicteeText();
+            this.startReading(textToRead, 0.9, 'normal');
+          }
+        } else if (this.speechState === 'paused') {
+          if (this.currentSpeechMode === 'normal') {
+            this.resumeReading();
+          } else {
+            const textToRead = this.getCurrentDicteeText();
+            this.startReading(textToRead, 0.9, 'normal');
+          }
         } else {
-          textToRead = dictee.sentences.join(' ');
+          const textToRead = this.getCurrentDicteeText();
+          this.startReading(textToRead, 0.9, 'normal');
         }
-        this.speak(textToRead, 0.9);
       });
     }
 
     const speakSlowBtn = document.getElementById('speakSlowBtn');
     if (speakSlowBtn) {
       speakSlowBtn.addEventListener('click', () => {
-        const dictee = this.getCurrentDictee();
-        let textToRead = "";
-        if (this.generationMode === 'story') {
-          textToRead = dictee.story;
-        } else if (this.generationMode === 'variations') {
-          textToRead = this.getVariationSentences().map(item => item.sentence).join(' ');
+        if (this.speechState === 'playing') {
+          if (this.currentSpeechMode === 'slow') {
+            this.pauseReading();
+          } else {
+            const textToRead = this.getCurrentDicteeText();
+            this.startReading(textToRead, 0.72, 'slow');
+          }
+        } else if (this.speechState === 'paused') {
+          if (this.currentSpeechMode === 'slow') {
+            this.resumeReading();
+          } else {
+            const textToRead = this.getCurrentDicteeText();
+            this.startReading(textToRead, 0.72, 'slow');
+          }
         } else {
-          textToRead = dictee.sentences.join(' ');
+          const textToRead = this.getCurrentDicteeText();
+          this.startReading(textToRead, 0.72, 'slow');
         }
-        this.speak(textToRead, 0.72);
+      });
+    }
+
+    const pauseSpeechBtn = document.getElementById('pauseSpeechBtn');
+    if (pauseSpeechBtn) {
+      pauseSpeechBtn.addEventListener('click', () => {
+        if (this.speechState === 'playing') {
+          this.pauseReading();
+        } else if (this.speechState === 'paused') {
+          this.resumeReading();
+        }
+      });
+    }
+
+    const stopSpeechBtn = document.getElementById('stopSpeechBtn');
+    if (stopSpeechBtn) {
+      stopSpeechBtn.addEventListener('click', () => {
+        this.stopSpeech();
       });
     }
 
@@ -1417,4 +1718,10 @@ class CM1App {
 window.addEventListener('DOMContentLoaded', () => {
   window.cm1App = new CM1App();
   window.cm1App.init();
+});
+
+window.addEventListener('beforeunload', () => {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
 });

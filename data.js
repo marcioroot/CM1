@@ -196,7 +196,7 @@ window.CM1_DATA = {
       "sacrer",
       "naitre"
     ],
-    "story": "Né en Corse, Napoléon Bonaparte est un jeune officier ambitieux que la Révolution française propulse au premier plan. Devenu consul après de brillants succès militaires, il parvient à s'emparer des rênes de l'État et se faire sacrer empereur des Français en 1804. Il souhaite maintenir certains acquis démocratiques de la République tout en instaurant un pouvoir autoritaire. Animé par le désir d'agrandir son empire, ce célèbre général remporte de nombreuses batailles contre chaque ennemi d'Europe avant que son triomphe ne s'effondre finalement.",
+    "story": "Né en Corse, Napoléon Bonaparte est un jeune officier ambitieux que la Révolution française propulse au premier plan. Devenu consul après de brillants succès militaires, il parvient à s'emparer des rênes de l'État et à se faire sacrer empereur des Français en 1804. Il souhaite maintenir certains acquis démocratiques de la République tout en instaurant un pouvoir autoritaire. Animé par le désir d'agrandir son empire, ce célèbre général remporte de nombreuses batailles contre chaque ennemi d'Europe avant que son triomphe ne s'effondre finalement.",
     "sentences": [
       "Né sur l'île de Corse, le jeune Bonaparte montre très tôt un talent militaire exceptionnel.",
       "Après la Révolution, le premier consul réussit à s'emparer du pouvoir suprême.",
