@@ -209,11 +209,10 @@ class CM1App {
     this.speechState = 'idle'; // 'idle' | 'playing' | 'paused'
     this.currentSpeechMode = null; // 'normal' | 'slow'
     this.currentSpeechRate = 0.9;
-    this.fullSpeechText = '';
-    this.speechBaseCharOffset = 0;
-    this.speechCharIndex = 0;
+    this.speechChunks = [];
+    this.currentChunkIndex = 0;
     this.currentUtterance = null;
-    this.keepAliveInterval = null;
+    this.chunkTimeout = null;
   }
 
   loadStats() {
@@ -257,10 +256,27 @@ class CM1App {
     if ('speechSynthesis' in window) {
       const findVoice = () => {
         const voices = window.speechSynthesis.getVoices();
-        this.frenchVoice = voices.find(v => v.lang.startsWith('fr') && (v.name.includes('Thomas') || v.name.includes('Hortense') || v.name.includes('Amelie') || v.name.includes('Google')))
-          || voices.find(v => v.lang.startsWith('fr'))
-          || null;
+        if (!voices || voices.length === 0) return;
+
+        // Filter all available French voices
+        const frenchVoices = voices.filter(v => v.lang && v.lang.startsWith('fr'));
+        if (frenchVoices.length === 0) return;
+
+        // 1. Prefer offline local system voices (native Windows SAPI, macOS/iOS, Linux)
+        // Remote/cloud voices (e.g. Google français) break pause/resume in Chromium
+        const localVoices = frenchVoices.filter(v => v.localService === true);
+        const pool = localVoices.length > 0 ? localVoices : frenchVoices;
+
+        // 2. Look for high-quality standard French voices
+        this.frenchVoice = pool.find(v =>
+          v.name.includes('Thomas') ||
+          v.name.includes('Hortense') ||
+          v.name.includes('Paul') ||
+          v.name.includes('Amelie') ||
+          v.name.includes('Julie')
+        ) || pool[0] || null;
       };
+
       findVoice();
       if (window.speechSynthesis.onvoiceschanged !== undefined) {
         window.speechSynthesis.onvoiceschanged = findVoice;
@@ -268,22 +284,33 @@ class CM1App {
     }
   }
 
-  getCurrentDicteeText() {
+  getCurrentDicteeTextChunks() {
     const dictee = this.getCurrentDictee();
-    if (!dictee) return "";
+    if (!dictee) return [];
+
+    let textArray = [];
     if (this.generationMode === 'story') {
-      return dictee.story;
+      // Split the story by sentence terminators (. ! ? … \n), preserving the punctuation
+      const matches = dictee.story.match(/[^.!?…\n]+(?:[.!?…]+|\n|$)/g);
+      textArray = matches ? matches.map(s => s.trim()).filter(Boolean) : [dictee.story.trim()];
     } else if (this.generationMode === 'variations') {
-      return this.getVariationSentences().map(item => item.sentence).join(' ');
+      textArray = this.getVariationSentences().map(item => item.sentence.trim()).filter(Boolean);
     } else {
-      return dictee.sentences.join(' ');
+      textArray = (dictee.sentences || []).map(s => s.trim()).filter(Boolean);
     }
+
+    return textArray.length > 0 ? textArray : [(dictee.story || "").trim()].filter(Boolean);
+  }
+
+  getCurrentDicteeText() {
+    return this.getCurrentDicteeTextChunks().join(' ');
   }
 
   // Short one-off speech for individual words or sentences
   speak(text, rate = 0.95) {
-    if (!('speechSynthesis' in window)) return;
+    if (!('speechSynthesis' in window) || !text) return;
     this.stopSpeech();
+
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'fr-FR';
     if (this.frenchVoice) {
@@ -291,54 +318,82 @@ class CM1App {
     }
     utterance.rate = rate;
     utterance.pitch = 1.05;
+
     this.currentUtterance = utterance;
     window._cm1_utterance = utterance;
     window.speechSynthesis.speak(utterance);
   }
 
-  // Full-text continuous reading with pause and resume support
-  startReading(text, rate = 0.9, mode = 'normal') {
-    if (!('speechSynthesis' in window) || !text) return;
+  // Full-text continuous reading with sentence-chunk queue architecture
+  startReading(input, rate = 0.9, mode = 'normal', startIndex = 0) {
+    if (!('speechSynthesis' in window)) return;
     this.stopSpeech();
+
+    let chunks = [];
+    if (Array.isArray(input)) {
+      chunks = input.filter(Boolean);
+    } else if (typeof input === 'string') {
+      const matches = input.match(/[^.!?…\n]+(?:[.!?…]+|\n|$)/g);
+      chunks = matches ? matches.map(s => s.trim()).filter(Boolean) : [input.trim()].filter(Boolean);
+    }
+
+    if (chunks.length === 0) return;
 
     this.speechState = 'playing';
     this.currentSpeechMode = mode;
     this.currentSpeechRate = rate;
-    this.fullSpeechText = text;
-    this.speechBaseCharOffset = 0;
-    this.speechCharIndex = 0;
+    this.speechChunks = chunks;
+    this.currentChunkIndex = Math.min(startIndex, chunks.length - 1);
 
-    this.speakTextSegment(text, rate, mode);
     this.updateSpeechControlsUI();
+    this.playCurrentChunk();
   }
 
-  speakTextSegment(text, rate, mode) {
+  playCurrentChunk() {
     if (!('speechSynthesis' in window)) return;
+    if (this.speechState !== 'playing') return;
+
+    if (this.currentChunkIndex >= this.speechChunks.length) {
+      this.resetSpeechControls();
+      return;
+    }
+
+    if (this.chunkTimeout) {
+      clearTimeout(this.chunkTimeout);
+      this.chunkTimeout = null;
+    }
+
     window.speechSynthesis.cancel();
 
+    const text = this.speechChunks[this.currentChunkIndex];
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'fr-FR';
     if (this.frenchVoice) {
       utterance.voice = this.frenchVoice;
     }
-    utterance.rate = rate;
+    utterance.rate = this.currentSpeechRate;
     utterance.pitch = 1.05;
-
-    utterance.onboundary = (e) => {
-      if (e && typeof e.charIndex === 'number') {
-        this.speechCharIndex = e.charIndex;
-      }
-    };
 
     utterance.onend = () => {
       if (this.speechState === 'playing') {
-        this.resetSpeechControls();
+        this.currentChunkIndex++;
+        if (this.currentChunkIndex < this.speechChunks.length) {
+          // Natural brief pause between sentences (250ms for normal, 450ms for slow)
+          const pauseDuration = this.currentSpeechMode === 'slow' ? 450 : 250;
+          this.chunkTimeout = setTimeout(() => {
+            if (this.speechState === 'playing') {
+              this.playCurrentChunk();
+            }
+          }, pauseDuration);
+        } else {
+          this.resetSpeechControls();
+        }
       }
     };
 
     utterance.onerror = (e) => {
       if (e.error !== 'interrupted' && e.error !== 'canceled') {
-        console.warn('SpeechSynthesis error:', e);
+        console.warn('Speech chunk error:', e);
         this.resetSpeechControls();
       }
     };
@@ -347,7 +402,6 @@ class CM1App {
     window._cm1_utterance = utterance;
 
     window.speechSynthesis.speak(utterance);
-    this.startKeepAlive();
   }
 
   pauseReading() {
@@ -355,8 +409,13 @@ class CM1App {
     if (this.speechState !== 'playing') return;
 
     this.speechState = 'paused';
-    this.stopKeepAlive();
-    window.speechSynthesis.pause();
+    if (this.chunkTimeout) {
+      clearTimeout(this.chunkTimeout);
+      this.chunkTimeout = null;
+    }
+
+    // Cancel current speech utterance immediately so sound halts without freeze
+    window.speechSynthesis.cancel();
     this.updateSpeechControlsUI();
   }
 
@@ -366,39 +425,16 @@ class CM1App {
 
     this.speechState = 'playing';
     this.updateSpeechControlsUI();
-    this.startKeepAlive();
 
-    if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
-      setTimeout(() => {
-        if (this.speechState === 'playing') {
-          if (window.speechSynthesis.paused) {
-            window.speechSynthesis.resume();
-          } else if (!window.speechSynthesis.speaking) {
-            this.resumeFromRemainingText();
-          }
-        }
-      }, 150);
-    } else if (!window.speechSynthesis.speaking) {
-      this.resumeFromRemainingText();
-    }
-  }
-
-  resumeFromRemainingText() {
-    const resumeIndex = this.speechBaseCharOffset + this.speechCharIndex;
-    this.speechBaseCharOffset = resumeIndex;
-    this.speechCharIndex = 0;
-    const remainingText = this.fullSpeechText ? this.fullSpeechText.slice(resumeIndex).trim() : '';
-
-    if (remainingText) {
-      this.speakTextSegment(remainingText, this.currentSpeechRate, this.currentSpeechMode);
-    } else {
-      this.resetSpeechControls();
-    }
+    // Replay current sentence chunk immediately (synchronous user gesture execution)
+    this.playCurrentChunk();
   }
 
   stopSpeech() {
-    this.stopKeepAlive();
+    if (this.chunkTimeout) {
+      clearTimeout(this.chunkTimeout);
+      this.chunkTimeout = null;
+    }
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
     }
@@ -406,30 +442,16 @@ class CM1App {
   }
 
   resetSpeechControls() {
-    this.stopKeepAlive();
+    if (this.chunkTimeout) {
+      clearTimeout(this.chunkTimeout);
+      this.chunkTimeout = null;
+    }
     this.speechState = 'idle';
     this.currentSpeechMode = null;
-    this.speechBaseCharOffset = 0;
-    this.speechCharIndex = 0;
+    this.speechChunks = [];
+    this.currentChunkIndex = 0;
     this.currentUtterance = null;
     this.updateSpeechControlsUI();
-  }
-
-  startKeepAlive() {
-    this.stopKeepAlive();
-    this.keepAliveInterval = setInterval(() => {
-      if (this.speechState === 'playing' && 'speechSynthesis' in window && window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-        window.speechSynthesis.pause();
-        window.speechSynthesis.resume();
-      }
-    }, 10000);
-  }
-
-  stopKeepAlive() {
-    if (this.keepAliveInterval) {
-      clearInterval(this.keepAliveInterval);
-      this.keepAliveInterval = null;
-    }
   }
 
   updateSpeechControlsUI() {
@@ -439,31 +461,6 @@ class CM1App {
     const stopSpeechBtn = document.getElementById('stopSpeechBtn');
 
     if (this.speechState === 'playing') {
-      if (this.currentSpeechMode === 'normal') {
-        if (speakAllBtn) {
-          speakAllBtn.innerHTML = '<span>⏸️</span> Pause';
-          speakAllBtn.title = 'Mettre en pause la lecture';
-          speakAllBtn.classList.add('is-speaking');
-          speakAllBtn.classList.remove('is-paused');
-        }
-        if (speakSlowBtn) {
-          speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
-          speakSlowBtn.title = 'Passer en lecture lente';
-          speakSlowBtn.classList.remove('is-speaking', 'is-paused');
-        }
-      } else {
-        if (speakSlowBtn) {
-          speakSlowBtn.innerHTML = '<span>⏸️</span> Pause';
-          speakSlowBtn.title = 'Mettre en pause la lecture lente';
-          speakSlowBtn.classList.add('is-speaking');
-          speakSlowBtn.classList.remove('is-paused');
-        }
-        if (speakAllBtn) {
-          speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
-          speakAllBtn.title = 'Passer en vitesse normale';
-          speakAllBtn.classList.remove('is-speaking', 'is-paused');
-        }
-      }
 
       if (pauseSpeechBtn) {
         pauseSpeechBtn.innerHTML = '<span>⏸️</span> Pause';
@@ -476,31 +473,6 @@ class CM1App {
         stopSpeechBtn.disabled = false;
       }
     } else if (this.speechState === 'paused') {
-      if (this.currentSpeechMode === 'normal') {
-        if (speakAllBtn) {
-          speakAllBtn.innerHTML = '<span>▶️</span> Reprendre';
-          speakAllBtn.title = 'Reprendre la lecture de la dictée';
-          speakAllBtn.classList.add('is-paused');
-          speakAllBtn.classList.remove('is-speaking');
-        }
-        if (speakSlowBtn) {
-          speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
-          speakSlowBtn.title = 'Lecture lente pour s\'entraîner à la dictée';
-          speakSlowBtn.classList.remove('is-speaking', 'is-paused');
-        }
-      } else {
-        if (speakSlowBtn) {
-          speakSlowBtn.innerHTML = '<span>▶️</span> Reprendre';
-          speakSlowBtn.title = 'Reprendre la lecture lente';
-          speakSlowBtn.classList.add('is-paused');
-          speakSlowBtn.classList.remove('is-speaking');
-        }
-        if (speakAllBtn) {
-          speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
-          speakAllBtn.title = 'Écouter la lecture à voix haute';
-          speakAllBtn.classList.remove('is-speaking', 'is-paused');
-        }
-      }
 
       if (pauseSpeechBtn) {
         pauseSpeechBtn.innerHTML = '<span>▶️</span> Reprendre';
@@ -514,16 +486,16 @@ class CM1App {
       }
     } else {
       // Idle state
-      if (speakAllBtn) {
-        speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
-        speakAllBtn.title = 'Écouter la lecture à voix haute';
-        speakAllBtn.classList.remove('is-speaking', 'is-paused');
-      }
-      if (speakSlowBtn) {
-        speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
-        speakSlowBtn.title = 'Lecture lente pour s\'entraîner à la dictée';
-        speakSlowBtn.classList.remove('is-speaking', 'is-paused');
-      }
+      // if (speakAllBtn) {
+      //   speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
+      //   speakAllBtn.title = 'Écouter la lecture à voix haute';
+      //   speakAllBtn.classList.remove('is-speaking', 'is-paused');
+      // }
+      // if (speakSlowBtn) {
+      //   speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
+      //   speakSlowBtn.title = 'Lecture lente pour s\'entraîner à la dictée';
+      //   speakSlowBtn.classList.remove('is-speaking', 'is-paused');
+      // }
       if (pauseSpeechBtn) {
         pauseSpeechBtn.innerHTML = '<span>⏸️</span> Pause';
         pauseSpeechBtn.title = 'Mettre en pause ou reprendre la lecture';
@@ -1070,7 +1042,7 @@ class CM1App {
       : dictee.sentences;
 
     const sentence = sentences[this.currentNotebookSentenceIndex] || sentences[0];
-    this.speak(sentence, slow ? 0.72 : 0.95);
+    this.speak(sentence, slow ? 0.5 : 0.95);
   }
 
   verifyNotebookDictation() {
@@ -1602,48 +1574,16 @@ class CM1App {
     const speakAllBtn = document.getElementById('speakAllBtn');
     if (speakAllBtn) {
       speakAllBtn.addEventListener('click', () => {
-        if (this.speechState === 'playing') {
-          if (this.currentSpeechMode === 'normal') {
-            this.pauseReading();
-          } else {
-            const textToRead = this.getCurrentDicteeText();
-            this.startReading(textToRead, 0.9, 'normal');
-          }
-        } else if (this.speechState === 'paused') {
-          if (this.currentSpeechMode === 'normal') {
-            this.resumeReading();
-          } else {
-            const textToRead = this.getCurrentDicteeText();
-            this.startReading(textToRead, 0.9, 'normal');
-          }
-        } else {
-          const textToRead = this.getCurrentDicteeText();
-          this.startReading(textToRead, 0.9, 'normal');
-        }
+        const textToRead = this.getCurrentDicteeText();
+        this.startReading(textToRead, 0.9, 'normal');
       });
     }
 
     const speakSlowBtn = document.getElementById('speakSlowBtn');
     if (speakSlowBtn) {
       speakSlowBtn.addEventListener('click', () => {
-        if (this.speechState === 'playing') {
-          if (this.currentSpeechMode === 'slow') {
-            this.pauseReading();
-          } else {
-            const textToRead = this.getCurrentDicteeText();
-            this.startReading(textToRead, 0.72, 'slow');
-          }
-        } else if (this.speechState === 'paused') {
-          if (this.currentSpeechMode === 'slow') {
-            this.resumeReading();
-          } else {
-            const textToRead = this.getCurrentDicteeText();
-            this.startReading(textToRead, 0.72, 'slow');
-          }
-        } else {
-          const textToRead = this.getCurrentDicteeText();
-          this.startReading(textToRead, 0.72, 'slow');
-        }
+        const textToRead = this.getCurrentDicteeText();
+        this.startReading(textToRead, 0.5, 'slow');
       });
     }
 

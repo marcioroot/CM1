@@ -13,7 +13,7 @@ if %errorlevel% neq 0 (
 )
 
 :: Open the application in the default web browser
-start http://localhost:3000/
+start http://localhost:80/
 
 :: Start the local web server
 node serve.js
