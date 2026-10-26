@@ -211,6 +211,8 @@ class CM1App {
     this.currentSpeechRate = 0.9;
     this.speechChunks = [];
     this.currentChunkIndex = 0;
+    this.currentChunkCharOffset = 0;
+    this.pausedChunkCharOffset = 0;
     this.currentUtterance = null;
     this.chunkTimeout = null;
   }
@@ -331,7 +333,7 @@ class CM1App {
 
     let chunks = [];
     if (Array.isArray(input)) {
-      chunks = input.filter(Boolean);
+      chunks = input.map(s => (s || '').trim()).filter(Boolean);
     } else if (typeof input === 'string') {
       const matches = input.match(/[^.!?…\n]+(?:[.!?…]+|\n|$)/g);
       chunks = matches ? matches.map(s => s.trim()).filter(Boolean) : [input.trim()].filter(Boolean);
@@ -344,6 +346,8 @@ class CM1App {
     this.currentSpeechRate = rate;
     this.speechChunks = chunks;
     this.currentChunkIndex = Math.min(startIndex, chunks.length - 1);
+    this.currentChunkCharOffset = 0;
+    this.pausedChunkCharOffset = 0;
 
     this.updateSpeechControlsUI();
     this.playCurrentChunk();
@@ -365,8 +369,25 @@ class CM1App {
 
     window.speechSynthesis.cancel();
 
-    const text = this.speechChunks[this.currentChunkIndex];
-    const utterance = new SpeechSynthesisUtterance(text);
+    const fullChunkText = this.speechChunks[this.currentChunkIndex];
+    let textToSpeak = fullChunkText;
+
+    if (this.pausedChunkCharOffset > 0 && this.pausedChunkCharOffset < fullChunkText.length) {
+      // Resume from the exact character/word offset where it was paused
+      textToSpeak = fullChunkText.slice(this.pausedChunkCharOffset).replace(/^[,;:.!?—\s]+/, '').trim();
+      if (!textToSpeak) {
+        this.currentChunkIndex++;
+        this.pausedChunkCharOffset = 0;
+        this.currentChunkCharOffset = 0;
+        this.playCurrentChunk();
+        return;
+      }
+    }
+
+    // Reset boundary tracking for this utterance segment
+    this.currentChunkCharOffset = 0;
+
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
     utterance.lang = 'fr-FR';
     if (this.frenchVoice) {
       utterance.voice = this.frenchVoice;
@@ -374,9 +395,18 @@ class CM1App {
     utterance.rate = this.currentSpeechRate;
     utterance.pitch = 1.05;
 
+    // Track word position boundary
+    utterance.onboundary = (e) => {
+      if (e && typeof e.charIndex === 'number') {
+        this.currentChunkCharOffset = e.charIndex;
+      }
+    };
+
     utterance.onend = () => {
       if (this.speechState === 'playing') {
         this.currentChunkIndex++;
+        this.pausedChunkCharOffset = 0;
+        this.currentChunkCharOffset = 0;
         if (this.currentChunkIndex < this.speechChunks.length) {
           // Natural brief pause between sentences (250ms for normal, 450ms for slow)
           const pauseDuration = this.currentSpeechMode === 'slow' ? 450 : 250;
@@ -414,6 +444,9 @@ class CM1App {
       this.chunkTimeout = null;
     }
 
+    // Accumulate the character offset where paused in the current chunk
+    this.pausedChunkCharOffset = (this.pausedChunkCharOffset || 0) + (this.currentChunkCharOffset || 0);
+
     // Cancel current speech utterance immediately so sound halts without freeze
     window.speechSynthesis.cancel();
     this.updateSpeechControlsUI();
@@ -426,7 +459,7 @@ class CM1App {
     this.speechState = 'playing';
     this.updateSpeechControlsUI();
 
-    // Replay current sentence chunk immediately (synchronous user gesture execution)
+    // Replay speech continuing from the paused chunk and char offset
     this.playCurrentChunk();
   }
 
@@ -450,6 +483,8 @@ class CM1App {
     this.currentSpeechMode = null;
     this.speechChunks = [];
     this.currentChunkIndex = 0;
+    this.currentChunkCharOffset = 0;
+    this.pausedChunkCharOffset = 0;
     this.currentUtterance = null;
     this.updateSpeechControlsUI();
   }
@@ -460,51 +495,62 @@ class CM1App {
     const pauseSpeechBtn = document.getElementById('pauseSpeechBtn');
     const stopSpeechBtn = document.getElementById('stopSpeechBtn');
 
-    if (this.speechState === 'playing') {
+    // speakAllBtn always maintains standard text
+    if (speakAllBtn) {
+      speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
+      speakAllBtn.title = 'Écouter la lecture à voix haute';
+      if (this.speechState === 'playing' && this.currentSpeechMode === 'normal') {
+        speakAllBtn.classList.add('is-speaking');
+        speakAllBtn.classList.remove('is-paused');
+      } else if (this.speechState === 'paused' && this.currentSpeechMode === 'normal') {
+        speakAllBtn.classList.add('is-paused');
+        speakAllBtn.classList.remove('is-speaking');
+      } else {
+        speakAllBtn.classList.remove('is-speaking', 'is-paused');
+      }
+    }
 
-      if (pauseSpeechBtn) {
+    // speakSlowBtn always maintains standard text
+    if (speakSlowBtn) {
+      speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
+      speakSlowBtn.title = 'Lecture lente pour s\'entraîner à la dictée';
+      if (this.speechState === 'playing' && this.currentSpeechMode === 'slow') {
+        speakSlowBtn.classList.add('is-speaking');
+        speakSlowBtn.classList.remove('is-paused');
+      } else if (this.speechState === 'paused' && this.currentSpeechMode === 'slow') {
+        speakSlowBtn.classList.add('is-paused');
+        speakSlowBtn.classList.remove('is-speaking');
+      } else {
+        speakSlowBtn.classList.remove('is-speaking', 'is-paused');
+      }
+    }
+
+    // pauseSpeechBtn is strictly the only button with Pause / Reprendre toggle
+    if (pauseSpeechBtn) {
+      if (this.speechState === 'playing') {
         pauseSpeechBtn.innerHTML = '<span>⏸️</span> Pause';
         pauseSpeechBtn.title = 'Mettre en pause la lecture';
         pauseSpeechBtn.disabled = false;
         pauseSpeechBtn.classList.add('is-speaking');
         pauseSpeechBtn.classList.remove('is-paused');
-      }
-      if (stopSpeechBtn) {
-        stopSpeechBtn.disabled = false;
-      }
-    } else if (this.speechState === 'paused') {
-
-      if (pauseSpeechBtn) {
+      } else if (this.speechState === 'paused') {
         pauseSpeechBtn.innerHTML = '<span>▶️</span> Reprendre';
         pauseSpeechBtn.title = 'Reprendre la lecture de la dictée';
         pauseSpeechBtn.disabled = false;
         pauseSpeechBtn.classList.add('is-paused');
         pauseSpeechBtn.classList.remove('is-speaking');
-      }
-      if (stopSpeechBtn) {
-        stopSpeechBtn.disabled = false;
-      }
-    } else {
-      // Idle state
-      // if (speakAllBtn) {
-      //   speakAllBtn.innerHTML = '<span>🔊</span> Tout écouter';
-      //   speakAllBtn.title = 'Écouter la lecture à voix haute';
-      //   speakAllBtn.classList.remove('is-speaking', 'is-paused');
-      // }
-      // if (speakSlowBtn) {
-      //   speakSlowBtn.innerHTML = '<span>🐌</span> Vitesse lente';
-      //   speakSlowBtn.title = 'Lecture lente pour s\'entraîner à la dictée';
-      //   speakSlowBtn.classList.remove('is-speaking', 'is-paused');
-      // }
-      if (pauseSpeechBtn) {
+      } else {
+        // Idle state
         pauseSpeechBtn.innerHTML = '<span>⏸️</span> Pause';
         pauseSpeechBtn.title = 'Mettre en pause ou reprendre la lecture';
         pauseSpeechBtn.disabled = true;
         pauseSpeechBtn.classList.remove('is-speaking', 'is-paused');
       }
-      if (stopSpeechBtn) {
-        stopSpeechBtn.disabled = true;
-      }
+    }
+
+    // stopSpeechBtn
+    if (stopSpeechBtn) {
+      stopSpeechBtn.disabled = (this.speechState === 'idle');
     }
   }
 
@@ -1574,16 +1620,16 @@ class CM1App {
     const speakAllBtn = document.getElementById('speakAllBtn');
     if (speakAllBtn) {
       speakAllBtn.addEventListener('click', () => {
-        const textToRead = this.getCurrentDicteeText();
-        this.startReading(textToRead, 0.9, 'normal');
+        const chunks = this.getCurrentDicteeTextChunks();
+        this.startReading(chunks, 0.9, 'normal');
       });
     }
 
     const speakSlowBtn = document.getElementById('speakSlowBtn');
     if (speakSlowBtn) {
       speakSlowBtn.addEventListener('click', () => {
-        const textToRead = this.getCurrentDicteeText();
-        this.startReading(textToRead, 0.5, 'slow');
+        const chunks = this.getCurrentDicteeTextChunks();
+        this.startReading(chunks, 0.5, 'slow');
       });
     }
 
