@@ -811,10 +811,10 @@ class CM1App {
       return `<span class="badge-target-word" onclick="window.cm1App.speak('${spoken}')" title="Mot cible de la ${dictee.title} (clique pour écouter)">${token}</span>`;
     }
     if (info.kind === 'target') {
-      return `<span class="badge-target-word badge-variation" onclick="window.cm1App.speak('${spoken}')" title="Variation de '${info.baseWord}' (${info.type}) - clique pour écouter">${token} <small class="var-tag">var.</small></span>`;
+      return `<span class="badge-target-word badge-variation" onclick="window.cm1App.speak('${spoken}')" title="Variation de '${info.baseWord}' (${info.type}) - clique pour écouter">${token}</span>`;
     }
     if (info.type) {
-      return `<span class="badge-prior-word badge-variation" onclick="window.cm1App.speak('${spoken}')" title="Mot révisé varié de '${info.baseWord}' (${info.type}) - clique pour écouter">${token} <small class="var-tag">révisé</small></span>`;
+      return `<span class="badge-prior-word" onclick="window.cm1App.speak('${spoken}')" title="Mot révisé varié de '${info.baseWord}' (${info.type}) - clique pour écouter">${token}</span>`;
     }
     return `<span class="badge-prior-word" onclick="window.cm1App.speak('${spoken}')" title="Mot révisé d'une dictée précédente (clique pour écouter)">${token}</span>`;
   }

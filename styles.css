@@ -1559,7 +1559,7 @@ body {
 /* Badge for variation words in texts */
 .badge-variation {
   background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%) !important;
-  color: #86198f !important;
+  color: #15803d !important;
   border: 1.5px solid #e879f9 !important;
   display: inline-flex;
   align-items: center;
@@ -1570,17 +1570,6 @@ body {
 .badge-variation:hover {
   background: #f5d0fe !important;
   transform: scale(1.04);
-}
-
-.var-tag {
-  font-size: 0.72rem;
-  background: #f0abfc;
-  color: #4a044e;
-  padding: 1px 5px;
-  border-radius: 4px;
-  font-weight: 800;
-  margin-left: 2px;
-  text-transform: uppercase;
 }
 
 /* Word Card Variations Drawer */
