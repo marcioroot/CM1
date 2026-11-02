@@ -33,11 +33,11 @@ window.CM1_DATA = {
     ],
     "story": "Après une longue résistance contre l'armée romaine, le célèbre général Vercingétorix tente d'opposer ses guerriers gaulois à l'ennemi. Jules César cherche à remporter la victoire pour constituer un empire immense. Malheureusement, les Gaulois doivent essuyer une défaite décisive. Vercingétorix est finalement fait prisonnier. Ce triomphe romain marque un tournant historique majeur, et les écrits de César restent un témoignage précieux de cette époque.",
     "sentences": [
-      "Le célèbre général romain a réussi à vaincre son ennemi gaulois.",
-      "Après de longs mois de lutte acharnée, les guerriers doivent essuyer un revers douloureux.",
-      "Ce texte historique constitue un précieux témoignage sur la vie en Gaule.",
-      "Finalement, le jeune chef gaulois est emmené prisonnier après ce triomphe romain.",
-      "La résistance du peuple gaulois a permis de remporter plusieurs batailles mémorables."
+      "Après des mois de résistances acharnées, les guerriers gaulois s'opposaient encore aux légions romaines.",
+      "Les généraux romains remportaient bataille après bataille contre leurs ennemis.",
+      "Les Gaulois essuyaient de lourdes pertes pendant que César célébrait ses triomphes.",
+      "Finalement, le chef gaulois vaincu est emmené à Rome avec d'autres prisonniers.",
+      "Ces archives historiques constituent des témoignages précieux sur des batailles célèbres."
     ]
   },
   {
@@ -66,11 +66,11 @@ window.CM1_DATA = {
     ],
     "story": "Né après la fin de la grandeur de Rome et de l'Antiquité, Clovis souhaite agrandir son royaume autrefois affaibli. Pour monter sur le trône et fonder une nouvelle dynastie, ce chef courageux doit affronter plus d'un ennemi et déjouer chaque complot. Ensemble avec ses fidèles partisans, il choisit de rencontrer les évêques et de nouer une alliance religieuse pour obtenir la tutelle des territoires. Après la fuite de ses rivaux, il parvient à vaincre ses opposants et à remporter un précieux triomphe historique.",
     "sentences": [
-      "Le jeune prince est né à la fin de l'Antiquité, au cœur d'un royaume affaibli.",
-      "Les partisans de la nouvelle dynastie se réunissent pour déjouer un complot contre le trône.",
-      "Pour obtenir la tutelle de la région, le roi décide de sceller une alliance politique.",
-      "Après la fuite soudaine de l'armée adverse, les soldats célèbrent ensemble leur succès.",
-      "Le souverain souhaite rassembler tous ses guerriers afin de vaincre l'ennemi."
+      "Née après la chute de Rome, la dynastie mérovingienne marque la fin de l'Antiquité.",
+      "Clovis souhaitait unir les royaumes affaiblis par de longues guerres.",
+      "Ensemble, ses fidèles partisans déjouent les complots de ceux qui convoitent son trône.",
+      "Le roi rencontrait souvent les évêques pour sceller des alliances solides.",
+      "Après la fuite précipitée de ses rivaux, il obtient enfin la tutelle de nouvelles provinces."
     ]
   },
   {
@@ -99,11 +99,11 @@ window.CM1_DATA = {
     ],
     "story": "Originaire de la riche région d'Aquitaine, Aliénor est une figure majeure de l'histoire médiévale. Très cultivée, cette reine d'exception aime soutenir les arts et devient un véritable mécène pour chaque poète, musicien et troubadour de son entourage royal. Après son divorce avec le roi de France, elle choisit d'épouser le souverain d'Angleterre. Même quand le royaume semble affaibli par le complot de ses ennemis, elle sait s'entendre avec ses partisans pour préserver son trône. On aime la surnommer la reine aux deux couronnes, dont le précieux témoignage traverse les siècles.",
     "sentences": [
-      "La duchesse d'Aquitaine était une femme très cultivée qui aimait soutenir les artistes.",
-      "Chaque poète, musicien ou troubadour trouvait auprès de ce mécène royal un accueil chaleureux.",
-      "Après son divorce, cette figure majeure de notre histoire va épouser le roi d'Angleterre.",
-      "C'est un véritable triomphe pour cette reine que l'on aimait surnommer avec admiration.",
-      "Les deux souverains peinent parfois à s'entendre pour gouverner ensemble le royaume."
+      "Aliénor d'Aquitaine, princesse très cultivée, est l'une des figures majeures du Moyen Âge.",
+      "À la cour royale, les poètes, les musiciennes et les troubadours trouvent toujours un accueil chaleureux.",
+      "Comme les véritables mécènes de son temps, la reine soutenait généreusement les artistes.",
+      "Après son divorce avec le roi de France, elle épouse le futur roi d'Angleterre.",
+      "Les deux époux s'entendaient mal, mais on surnommait Aliénor « la reine aux deux couronnes »."
     ]
   },
   {
@@ -132,11 +132,11 @@ window.CM1_DATA = {
     ],
     "story": "Au seizième siècle, un terrible conflit religieux déchire le royaume de France. Catherine de Médicis, une souveraine d'origine italienne, assure la régence après la mort brutale de son puissant mari. Elle s'efforce de négocier un accord de paix, mais la haine entre catholique et protestant va malheureusement se poursuivre. Henri de Navarre, issu d'une illustre dynastie, cherche à vaincre les divisions pour enfin régner. Pour apaiser la querelle de religion et remporter l'adhésion de ses opposants, ce célèbre général choisit de devenir catholique. Son alliance rétablit finalement la paix sur le trône royal.",
     "sentences": [
-      "La reine d'origine italienne assure avec autorité la régence suite au décès de son mari.",
-      "Le nouveau roi s'efforce de trouver un accord équitable pour apaiser chaque conflit.",
-      "Malheureusement, les tensions entre citoyen catholique et protestant menacent de se poursuivre.",
-      "Ce puissant monarque, issu d'une noble lignée, est prêt à régner sur tout le royaume.",
-      "Pour mettre un terme aux violences de religion, le prince accepte de devenir catholique."
+      "Catherine de Médicis, souveraine italienne, assure la régence après la mort de son mari.",
+      "Les conflits de religion opposent les catholiques et les protestants pendant de longues années.",
+      "Malheureusement, les massacres se poursuivent malgré les accords de paix signés.",
+      "Issu d'une puissante famille, Henri de Navarre s'efforce de réconcilier les Français.",
+      "Devenu catholique, Henri IV règne enfin sur un royaume apaisé."
     ]
   },
   {
@@ -165,11 +165,11 @@ window.CM1_DATA = {
     ],
     "story": "Au dix-septième siècle, le Roi-Soleil devient le plus puissant monarque d'Europe. Voulant gouverner avec un pouvoir absolu, Louis XIV décide de construire à Versailles un somptueux palais afin d'y faire rayonner la grandeur de la France. Une cour nombreuse et un peuple laborieux viennent s'installer autour de ce domaine royal. Bien que les dépenses et les années de guerre risquent d'appauvrir les provinces, Versailles demeure l'un des lieux les plus peuplés et admirés du continent. Finalement, ce palais historique constitue un précieux témoignage de l'art classique.",
     "sentences": [
-      "Le Roi-Soleil a choisi de construire le somptueux palais de Versailles pour y gouverner.",
-      "Ce monarque absolu voulait faire rayonner son immense pouvoir à travers toute l'Europe.",
-      "De nombreux courtisans viennent s'installer auprès du souverain dans cette ville très peuplée.",
-      "Malheureusement, le coût d'une longue guerre menaçait d'appauvrir les finances du royaume.",
-      "La régence passée, ce puissant roi décide de régner seul sans premier ministre."
+      "Les ouvriers construisaient à Versailles des jardins somptueux pour le Roi-Soleil.",
+      "Ce palais immense rayonne sur toute l'Europe.",
+      "De nombreuses familles nobles s'installent à la cour pour vivre près du monarque.",
+      "Louis XIV gouverne seul et concentre tous les pouvoirs dans une monarchie absolue.",
+      "Les guerres coûteuses appauvrissent les provinces les plus peuplées du royaume."
     ]
   },
   {
@@ -198,11 +198,12 @@ window.CM1_DATA = {
     ],
     "story": "Né en Corse, Napoléon Bonaparte est un jeune officier ambitieux que la Révolution française propulse au premier plan. Devenu consul après de brillants succès militaires, il parvient à s'emparer des rênes de l'État et à se faire sacrer empereur des Français en 1804. Il souhaite maintenir certains acquis démocratiques de la République tout en instaurant un pouvoir autoritaire. Animé par le désir d'agrandir son empire, ce célèbre général remporte de nombreuses batailles contre chaque ennemi d'Europe avant que son triomphe ne s'effondre finalement.",
     "sentences": [
-      "Né sur l'île de Corse, le jeune Bonaparte montre très tôt un talent militaire exceptionnel.",
-      "Après la Révolution, le premier consul réussit à s'emparer du pouvoir suprême.",
-      "Le souverain décide de se faire sacrer empereur des Français dans la cathédrale Notre-Dame.",
-      "Pour maintenir l'ordre et agrandir son vaste empire, il engage de multiples campagnes.",
-      "Certains citoyens soutiennent les acquis républicains tandis que d'autres s'y opposent."
+      "Napoléon Bonaparte naît en Corse en 1769.",
+      "Après la Révolution, le jeune général devient consul puis s'empare du pouvoir.",
+      "En 1804, il se déclare empereur des Français.",
+      "Le pape le sacre à Notre-Dame, mais Napoléon s'attribue lui-même la couronne.",
+      "Il maintient certaines idées de la Révolution et préserve les libertés acquises par les citoyens.",
+      "Il agrandit son territoire en affrontant les empires voisins."
     ]
   },
   {
@@ -231,11 +232,12 @@ window.CM1_DATA = {
     ],
     "story": "Considéré comme l'un des plus grands génies de la Renaissance, Léonard de Vinci était à la fois peintre, sculpteur, architecte et inventeur visionnaire. Dans ses carnets, on découvre de multiples ébauches pour concevoir un appareil volant ou une machine mécanique novatrice. Son œuvre la plus célèbre, la Joconde, reste un symbole universel de beauté conservé au musée du Louvre. Cet artiste d'exception aimait observer la nature pour créer des chefs-d'œuvre parmi les plus précieux de l'humanité.",
     "sentences": [
-      "Ce peintre et sculpteur de génie est considéré comme la figure majeure de la Renaissance.",
-      "Chaque appareil imaginé dans ses croquis montre une étonnante mécanique moderne.",
-      "L'artiste aimait concevoir une ébauche détaillée avant de créer son chef-d'œuvre final.",
-      "Son œuvre immortelle demeure précieusement conservée dans les galeries du musée.",
-      "Parmi toutes ses inventions, ses machines volantes fascinent encore les ingénieurs d'aujourd'hui."
+      "Les peintures de Léonard de Vinci sont considérées comme des trésors de la Renaissance.",
+      "Les architectes, les sculpteurs et les inventeurs de son temps admiraient son talent.",
+      "Dans ses carnets, il conçoit des appareils volants et des machines mécaniques.",
+      "Ses nombreuses ébauches montrent comment il crée chacune de ses inventions.",
+      "Parmi toutes ses œuvres, la Joconde est conservée au Louvre, le plus visité des musées.",
+      "Ce tableau est devenu l'un des symboles de l'art occidental."
     ]
   },
   {
@@ -264,11 +266,13 @@ window.CM1_DATA = {
     ],
     "story": "Né en Autriche, Wolfgang Amadeus Mozart est un enfant prodige au talent musical éblouissant. Dès son plus jeune âge, lorsqu'il entend une mélodie, il est capable de la rejouer sans hésiter. Il parvient à composer plusieurs symphonies et opéras alors que la vie de musicien itinérant est souvent difficile. Malgré un immense succès auprès du public émerveillé et la protection de grands mécènes, celui-ci peine parfois à gagner sa vie. La maladie fait éclater sa brillante carrière, et il vient à mourir très jeune, laissant des morceaux inoubliables pour l'éternité.",
     "sentences": [
-      "Ce jeune prodige né en Autriche a ébloui les cours royales dès l'âge de six ans.",
-      "Lorsqu'il se met au piano, il commence à composer un morceau d'une grande virtuosité.",
-      "Malgré son talent remarquable, celui-ci doit affronter plusieurs périodes de vie difficile.",
-      "Le succès de ses opéras ne suffit pas à empêcher l'artiste de peiner financièrement.",
-      "Le monde entier pleure ce génie lorsqu'il vient à mourir prématurément."
+      "Né en Autriche, Mozart est l'un des plus grands prodiges de la musique.",
+      "Il apprend le clavecin très jeune et compose déjà de petits morceaux à cinq ans.",
+      "Les rois et les reines sont éblouis par ses talents exceptionnels.",
+      "Lorsque ses opéras sont joués, les applaudissements éclatent dans la salle.",
+      "Sa sœur joue aussi du piano : celle-ci accompagne souvent son frère en tournée.",
+      "Malgré plusieurs succès et la protection de quelques mécènes, il connaît des années difficiles.",
+      "Mozart peine souvent à payer ses dettes et meurt à seulement trente-cinq ans."
     ]
   },
   {
@@ -297,11 +301,12 @@ window.CM1_DATA = {
     ],
     "story": "Aurore Dupin, plus connue sous le nom de plume de George Sand, est une femme de lettres d'un talent exceptionnel. Véritable romancier et dramaturge, elle sait toucher le cœur des gens en décrivant la vie rurale et les injustices sociales de son époque. Capable de rédiger avec une rapidité impressionnante, elle fait publier des dizaines de romans et pièces de théâtre. Très engagée dans la vie politique, cette artiste n'hésite pas à ajouter sa voix à la défense de la liberté. Rarement un écrit n'a autant marqué la mémoire collective.",
     "sentences": [
-      "Cette femme de grand courage a choisi un nom d'homme pour publier ses romans.",
-      "Véritable artiste engagée, elle sait captiver les gens grâce à la finesse de sa plume.",
-      "Elle était capable d'écrire une pièce de théâtre entière en quelques nuits de travail.",
-      "Son œuvre laisse un souvenir inoubliable dans la mémoire des amoureux de littérature.",
-      "Rarement un écrivain n'a su lier avec autant de force la poésie et la réflexion politique."
+      "George Sand est l'une des femmes écrivaines les plus célèbres du XIXe siècle.",
+      "Cette romancière choisit un nom de plume masculin et publie de nombreux romans.",
+      "Elle écrit aussi des pièces pour les théâtres parisiens.",
+      "Ses écrits politiques défendent les gens les plus pauvres.",
+      "Comme tous les véritables artistes, elle ajoute un peu de son cœur à chaque page.",
+      "Capables de traverser les siècles, ses livres restent dans les mémoires et on les oublie rarement."
     ]
   },
   {
@@ -330,11 +335,12 @@ window.CM1_DATA = {
     ],
     "story": "Au milieu du vingtième siècle aux États-Unis, la population afro-américaine doit subir les lois injustes de la ségrégation et un pesant racisme quotidien. Un jour mémorable, une femme courageuse refuse de céder sa place dans le bus pour défendre sa dignité et sa liberté. Cet acte héroïque pousse toute la communauté à combattre les préjugés et à empêcher l'injustice de triompher. Devenue une figure célèbre à travers le monde, elle a inspiré de nombreux livres, spectacles et comédies musicales pour rappeler que chaque spectateur doit défendre les droits de chaque famille.",
     "sentences": [
-      "Aux États-Unis, les citoyens noirs ont dû combattre une terrible ségrégation raciale.",
-      "Au milieu des années cinquante, cette femme digne s'est levée pour défendre sa liberté.",
-      "Ce spectacle musical poignant rappelle au spectateur la lutte contre chaque préjugé.",
-      "Rien ne pouvait empêcher cette famille déterminée de faire reculer le racisme.",
-      "Cette célèbre héroïne a inspiré le monde entier dans sa marche vers l'égalité."
+      "Au milieu du XXe siècle, aux États-Unis, les Afro-Américains subissent la ségrégation.",
+      "En 1955, Rosa Parks refuse de céder sa place : son geste reste l'un des plus célèbres de l'histoire.",
+      "Elle défend les libertés de toutes les familles noires et combat le racisme.",
+      "Les préjugés n'empêchent pas les militants de poursuivre leur lutte.",
+      "Aujourd'hui, des spectacles et des comédies musicales racontent son histoire.",
+      "Les spectateurs, très émus, applaudissent son courage."
     ]
   },
   {
@@ -363,11 +369,12 @@ window.CM1_DATA = {
     ],
     "story": "Au vingtième siècle, l'artiste d'origine française et américaine Niki de Saint Phalle crée un scandale retentissant dans le milieu de l'art. Elle imagine un grand panneau de bois sur lequel elle vient attacher des poches de peinture dissimulées sous une épaisse plaque de plâtre blanc. Armée d'une carabine, elle invite le public à tirer sur ce tableau immaculé. Sous l'impact des balles, la couleur jaillit pour s'étaler avec éclat, offrant une œuvre intitulée « Les Tirs ». L'artiste aimait expliquer que ce geste rempli d'audace permettait d'exorciser la douleur et de dénoncer toute forme d'injustice.",
     "sentences": [
-      "L'artiste française a provoqué un immense scandale avec ses performances inédites.",
-      "Elle commence par attacher des sachets de gouache sur un grand panneau recouvert de plâtre blanc.",
-      "L'invité prend la carabine pour tirer sur la plaque et libérer les pigments cachés.",
-      "La peinture vive vient s'étaler sur le tableau immaculé en une gerbe spectaculaire.",
-      "Ce travail rempli d'énergie cherche à expliquer et combattre chaque injustice sociale."
+      "Au XXe siècle, l'artiste française Niki de Saint Phalle provoque de nombreux scandales.",
+      "Elle attache des poches de peinture sur de grands panneaux de bois.",
+      "Puis elle recouvre le tout de plaques blanches en plâtre.",
+      "Armés de carabines, les visiteurs tirent sur ces tableaux immaculés.",
+      "La peinture s'étale alors en coulées colorées sur les œuvres intitulées « Tirs ».",
+      "L'artiste explique que ces gestes remplis de colère dénoncent les injustices."
     ]
   },
   {
@@ -396,11 +403,12 @@ window.CM1_DATA = {
     ],
     "story": "Né au Japon, le manga moderne est devenu un phénomène mondial génial grâce à des créateurs de légende comme Osamu Tezuka ou Akira Toriyama. Dans ces récits passionnants, un jeune héros au parcours semé d'embûches doit affronter un redoutable adversaire pour sauver ses amis. Accompagné de compagnons fidèles, le personnage découvre parfois un dragon magique ou une boule de cristal capable d'exaucer le vœu le plus cher. Dès qu'un nouvel épisode vient à apparaître en librairie, chaque auteur partage avec les lecteurs une aventure extraordinaire aux créatures fabuleuses dotées d'une longue queue d'animal.",
     "sentences": [
-      "Au Japon, cet auteur génial a créé une véritable légende de la bande dessinée.",
-      "Le jeune héros doit affronter son adversaire principal au terme d'un long parcours initiatique.",
-      "Accompagné de ses amis fidèles, le personnage part à la recherche d'un cristal magique.",
-      "Selon le conte, la créature mystérieuse possède le pouvoir d'exaucer les souhaits les plus purs.",
-      "Une silhouette ailée vient soudain à apparaître au sommet de la falaise rocheuse."
+      "Les mangas sont nés au Japon et passionnent aujourd'hui les lecteurs du monde entier.",
+      "Ces auteurs géniaux inventent des personnages inoubliables.",
+      "L'héroïne, accompagnée de ses amis, affronte de redoutables adversaires.",
+      "Au fil de leurs parcours semés d'embûches, ils recherchent des cristaux magiques.",
+      "Selon les légendes, un dragon exauce les vœux de celui qui réunit les sept boules.",
+      "Soudain, des créatures à longues queues apparaissent dans le ciel."
     ]
   },
   {
@@ -429,11 +437,11 @@ window.CM1_DATA = {
     ],
     "story": "À l'époque médiévale, le savant Ibn Sina, surnommé Avicenne, occupe une place centrale dans l'histoire des sciences. Considéré comme le fondateur de la médecine rationnelle, il maîtrise un vaste langage savant couvrant de multiples disciplines : astronomie, physique, botanique et mathématiques. Son ouvrage le plus célèbre, le Canon de la médecine, a pu servir de manuel de référence pour l'enseignement médical durant des siècles, posant les bases de la recherche scientifique moderne. C'est une sorte de pont intellectuel inestimable entre l'Antiquité et notre époque.",
     "sentences": [
-      "À cette époque glorieuse, la ville occupait une place centrale dans le monde savant.",
-      "Ce médecin d'exception est reconnu comme le fondateur de la médecine moderne.",
-      "Chaque discipline comme la botanique ou l'astronomie fait l'objet d'un examen rigoureux.",
-      "Son célèbre ouvrage va servir de base à l'enseignement scientifique pendant des siècles.",
-      "La physique et les mathématiques permettent de comprendre les secrets de la nature."
+      "Au fil des époques, Bagdad et Ispahan occupent une place centrale dans le monde savant.",
+      "Ibn Sina est l'un des fondateurs de la médecine et des sciences modernes.",
+      "Il étudie de nombreuses disciplines : l'astronomie, les mathématiques, la botanique et la physique.",
+      "Ses ouvrages scientifiques servent pendant des siècles de base aux enseignements des universités.",
+      "Les savants de toutes sortes, malgré leurs langages différents, échangent leurs découvertes."
     ]
   },
   {
@@ -462,11 +470,12 @@ window.CM1_DATA = {
     ],
     "story": "Au quinzième siècle, un artisan allemand ingénieux du nom de Johannes Gutenberg met au point une invention révolutionnaire : l'imprimerie à caractères mobiles en métal. Jusque-là, il fallait vivre de longs mois à recopier chaque livre à la main, ce qui limitait considérablement la diffusion du savoir. Grâce à ce nouveau système mécanique, on peut désormais reproduire un exemplaire en des centaines d'exemplaires identiques et à moindre coût. Cette technique va se diffuser et se répandre largement à travers l'Europe, transformant de manière extrêmement rapide le monde de l'éducation et de la culture.",
     "sentences": [
-      "L'artisan allemand a mis au point un caractère mobile métallique particulièrement résistant.",
-      "Cette invention géniale a permis d'imprimer chaque exemplaire en un temps record.",
-      "Auparavant, les moines devaient recopier à la plume chaque précieux volume.",
-      "Le nouveau système va se diffuser et se répandre largement dans toutes les cités d'Europe.",
-      "Les livres sont devenus extrêmement populaires auprès d'un public de plus en plus large."
+      "Avec d'autres artisans allemands, Gutenberg met au point l'imprimerie vers 1450.",
+      "Il utilise des caractères mobiles en métal que l'on peut assembler.",
+      "Avant ses inventions, les moines recopient chaque livre à la main.",
+      "Les presses reproduisent rapidement des centaines d'exemplaires identiques.",
+      "Les livres se diffusent et se répandent largement dans toute l'Europe.",
+      "Grâce à ces systèmes extrêmement efficaces, de nombreux imprimeurs vivent de leur métier dans les imprimeries des grandes villes."
     ]
   },
   {
@@ -495,11 +504,12 @@ window.CM1_DATA = {
     ],
     "story": "Grâce à une lunette astronomique perfectionnée de ses propres mains, le savant et physicien italien Galilée observe le ciel nocturne comme personne avant lui. Il parvient à prouver par l'expérimentation que la Terre n'est pas immobile au centre de l'univers, mais qu'elle se déplace en orbite autour de notre Soleil. Cette découverte fondamentale vient bousculer la théorie acceptée jusque-là par les penseurs traditionnels. Cet astronome passionné a ainsi posé les jalons de la science moderne, démontrant que l'observation et la mesure sont les clés de la vérité.",
     "sentences": [
-      "Grâce à sa lunette astronomique, le savant italien observe la Lune avec une netteté inédite.",
-      "Le physicien s'efforce de prouver sa nouvelle théorie par une rigoureuse expérimentation.",
-      "Contrairement aux croyances anciennes, la Terre n'est pas immobile mais tourne autour du Soleil.",
-      "L'astronome a montré que les planètes continuent de se déplacer selon des lois précises.",
-      "Jusque-là, la science officielle refusait d'admettre le mouvement réel des corps célestes."
+      "Galilée, physicien de génie, compte parmi les plus grands savants italiens.",
+      "Grâce à ses lunettes astronomiques, il observe les montagnes de la Lune.",
+      "Il prouve par de nombreuses expérimentations que la Terre n'est pas immobile.",
+      "Selon lui, la Terre et les autres planètes se déplacent autour de notre étoile, le Soleil.",
+      "Jusque-là, les théories anciennes plaçaient la Terre au centre de l'univers.",
+      "Ses instruments d'observation ont aidé les astronomes à faire progresser les sciences."
     ]
   },
   {
@@ -547,11 +557,14 @@ window.CM1_DATA = {
     ],
     "story": "Autrefois, sur une ile lointaine de Samoa, un jeune garçon fait preuve d'un grand courage pour affronter la montagne. Pourtant, la fumée et le feu rendent cet endroit particulièrement dangereux. Malgré la colère du gardien qui refuse de donner la flamme aux humains, l'enfant réussit à apporter ce précieux cadeau à son peuple. Aujourd'hui encore, grâce à cet exploit légendaire, les habitants se souviennent de ce voyage héroïque.",
     "sentences": [
-      "Autrefois, les habitants vivaient sur une ile volcanique au milieu de l'océan.",
-      "Le jeune garçon fait preuve d'un grand courage malgré le danger de la montagne.",
-      "Soudain, une épaisse fumée s'élève au-dessus du rocher incandescent.",
-      "Aujourd'hui, grâce à ce cadeau inestimable, le feu réchauffe chaque famille.",
-      "Aussitôt prévenu, le peuple remercie ce héros pour son geste généreux."
+      "Autrefois, sur une ile de Samoa, les humains ne connaissaient pas le feu.",
+      "Depuis longtemps, un géant en colère gardait les flammes au sommet d'une grande montagne.",
+      "Ce gardien possédait le feu, pourtant il ne le donnait à personne et refusait toute demande.",
+      "Un jeune garçon plein de courage grimpe avec prudence parmi les rochers dangereux.",
+      "Soudain, d'épaisses fumées s'échappent des rochers, mais le garçon dit qu'il n'a pas peur.",
+      "Malgré le danger, il apporte aussitôt ce précieux cadeau à son village.",
+      "Aujourd'hui encore, grâce à lui, les familles vivent bien mieux qu'avant.",
+      "Parfois, la montagne où dort le géant gronde et crache des flammes."
     ]
   },
   {
@@ -600,11 +613,14 @@ window.CM1_DATA = {
     ],
     "story": "Pour traverser l'immense océan et s'installer en Nouvelle-Zélande, les premiers habitants ont accompli un fabuleux voyage. Grâce aux étoiles et au soleil pour se diriger, chaque ancêtre guidait son bateau avec une remarquable précision. Ce peuple respecte profondément son passé et son histoire généalogique. Leurs pirogues légères, au profil allongé et richement sculpté, montrent un artisanat d'une rare élégance.",
     "sentences": [
-      "Les premiers navigateurs ont su traverser le vaste océan sans boussole.",
-      "Chaque ancêtre savait se diriger grâce à la position du soleil et des étoiles.",
-      "Ce peuple respecte profondément son histoire et ses traditions séculaires.",
-      "Le bateau allongé et richement sculpté avance avec une allure impressionnante.",
-      "Pour arriver sur cette nouvelle terre, les équipages ont montré un courage admirable."
+      "Les premiers habitants de la Nouvelle-Zélande sont arrivés par l'océan.",
+      "Pour découvrir de nouvelles terres, leurs ancêtres traversaient le Pacifique à bord de bateaux appelés wakas.",
+      "Ils se dirigeaient à l'aide du soleil et des étoiles.",
+      "Ces pirogues légères et rapides avançaient sur les vagues avec une allure majestueuse.",
+      "Leur coque allongée était richement sculptée jusqu'aux extrémités.",
+      "Après de longs voyages, les familles s'installent sur cette île plutôt sauvage et commencent à cultiver la terre.",
+      "Les Maoris respectent profondément leur passé et les origines de leur peuple.",
+      "Les anciens montrent aux enfants les arbres généalogiques qui racontent l'histoire de leur famille."
     ]
   },
   {
@@ -667,11 +683,18 @@ window.CM1_DATA = {
     ],
     "story": "Aux États-Unis, le célèbre récit du Magicien d'Oz raconte l'aventure extraordinaire d'une jeune fille emportée par un violent cyclone dévastateur. Sa maison s'envole dans les airs avant d'atterrir dans un pays merveilleux et coloré. Pour retrouver son foyer, elle doit suivre un brillant chemin de briques jaunes qui mène vers une cité magique. Accompagnée d'un épouvantail, d'un bûcheron en fer-blanc et d'un lion peureux, elle fait face à une dangereuse sorcière mais reçoit la protection bienveillante d'une gentille fée.",
     "sentences": [
-      "Ce récit captivant raconte l'aventure d'une jeune fille emportée par un cyclone dévastateur.",
-      "La maison s'est envolée dans le vent violent avant d'atterrir dans un pays merveilleux.",
-      "Pour retrouver sa famille, elle s'engage avec courage sur le chemin de briques jaunes.",
-      "Le bûcheron en fer-blanc et le lion peureux deviennent ses compagnons fidèles.",
-      "Grâce à la magie bienfaisante et aux conseils de ses amis, elle parvient à vaincre le danger."
+      "Ce récit célèbre des États-Unis raconte les aventures de Dorothée, une jeune fille du Kansas.",
+      "Un jour, un cyclone dévastateur et des vents violents emportent sa maison.",
+      "La maison s'envole puis atterrit dans un pays merveilleux aux mille couleurs.",
+      "En effet, la maison tombe sur une sorcière dangereuse et sauve ainsi les villageois.",
+      "Les petits habitants de ce pays remercient alors cette étrangère venue du ciel.",
+      "La gentille fée du Nord, sa protectrice, lui conseille de suivre le chemin de briques jaunes.",
+      "Ensuite, elle rencontre un épouvantail, un bûcheron en fer-blanc et un lion peureux.",
+      "Avec ses amis, elle marche vers une cité brillante pour rencontrer un puissant sorcier.",
+      "Mais la sorcière de l'Ouest, qui sème la terreur, perd tous ses pouvoirs quand Dorothée lui jette un seau d'eau.",
+      "Unis par cette aventure, les quatre amis sont devenus comme des frères et des sœurs.",
+      "Grâce à la magie de ses souliers, Dorothée rentre enfin chez elle.",
+      "Aujourd'hui encore, les garçons et les filles du monde entier adorent ce récit."
     ]
   }
 ],

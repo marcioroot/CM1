@@ -799,15 +799,65 @@ class CM1App {
     }));
   }
 
-  renderGeneratedContent() {
-    this.stopSpeech();
-    const dictee = this.getCurrentDictee();
-    const priorWords = this.getPriorWords();
+  // Normalizes a word or phrase for comparisons (lowercase, straight apostrophes, single spaces)
+  normalizeWordKey(value) {
+    return value.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
+  }
 
-    // Helper to highlight words, recognizing both base forms AND all grammatical variations!
-    const highlightText = (text) => {
+  // Builds the HTML badge for a highlighted word (or multi-word phrase)
+  buildWordBadge(token, info, dictee) {
+    const spoken = token.replace(/'/g, "\\'");
+    if (info.kind === 'target' && !info.type) {
+      return `<span class="badge-target-word" onclick="window.cm1App.speak('${spoken}')" title="Mot cible de la ${dictee.title} (clique pour écouter)">${token}</span>`;
+    }
+    if (info.kind === 'target') {
+      return `<span class="badge-target-word badge-variation" onclick="window.cm1App.speak('${spoken}')" title="Variation de '${info.baseWord}' (${info.type}) - clique pour écouter">${token} <small class="var-tag">var.</small></span>`;
+    }
+    if (info.type) {
+      return `<span class="badge-prior-word badge-variation" onclick="window.cm1App.speak('${spoken}')" title="Mot révisé varié de '${info.baseWord}' (${info.type}) - clique pour écouter">${token} <small class="var-tag">révisé</small></span>`;
+    }
+    return `<span class="badge-prior-word" onclick="window.cm1App.speak('${spoken}')" title="Mot révisé d'une dictée précédente (clique pour écouter)">${token}</span>`;
+  }
+
+  // Collects the target/prior words and variations that span several tokens
+  // (containing a space, an apostrophe or a hyphen, e.g. "s'attribue", "se déclare", "États-Unis")
+  getMultiTokenPhrases(dictee, priorWords) {
+    const isMultiToken = (value) => /[\s'\-]/.test(value);
+    const targetBases = dictee.words.map(w => this.normalizeWordKey(w));
+    const priorBases = this.includePriorVocab ? priorWords.map(w => this.normalizeWordKey(w)) : [];
+    const phrases = new Map();
+
+    const addPhrase = (form, info) => {
+      const key = this.normalizeWordKey(form);
+      if (!key || key.includes('/') || !isMultiToken(key)) return;
+      const existing = phrases.get(key);
+      // Target words take precedence over prior words; base forms over variations
+      if (!existing || (existing.kind === 'prior' && info.kind === 'target')) {
+        phrases.set(key, info);
+      }
+    };
+
+    dictee.words.forEach(w => addPhrase(w, { kind: 'target', baseWord: w, type: null }));
+    priorWords.forEach(w => { if (this.includePriorVocab) addPhrase(w, { kind: 'prior', baseWord: w, type: null }); });
+
+    Object.entries(window.CM1_DATA.reverseIndex || {}).forEach(([form, rev]) => {
+      const base = this.normalizeWordKey(rev.baseWord);
+      if (targetBases.includes(base)) {
+        addPhrase(form, { kind: 'target', baseWord: rev.baseWord, type: rev.type });
+      } else if (priorBases.includes(base)) {
+        addPhrase(form, { kind: 'prior', baseWord: rev.baseWord, type: rev.type });
+      }
+    });
+
+    return phrases;
+  }
+
+  // Highlights target words, prior words and their grammatical variations in a text
+  highlightText(text, dictee, priorWords) {
+    // Single-token highlighting (original behavior)
+    const highlightTokens = (segment) => {
       // Split into tokens preserving delimiters
-      const tokens = text.split(/([\s,.;:!?'"«»()\[\]\-]+)/);
+      const tokens = segment.split(/([\s,.;:!?'’"«»()\[\]\-]+)/);
 
       return tokens.map(token => {
         const clean = token.toLowerCase().trim();
@@ -816,7 +866,7 @@ class CM1App {
         // Check if exact target word
         const exactTarget = dictee.words.find(w => w.toLowerCase() === clean);
         if (exactTarget) {
-          return `<span class="badge-target-word" onclick="window.cm1App.speak('${token.replace(/'/g, "\\'")}')" title="Mot cible de la ${dictee.title} (clique pour écouter)">${token}</span>`;
+          return this.buildWordBadge(token, { kind: 'target', baseWord: exactTarget, type: null }, dictee);
         }
 
         // Check if reverse variation of target word
@@ -824,21 +874,53 @@ class CM1App {
           const rev = window.CM1_DATA.reverseIndex[clean];
           const isTargetBase = dictee.words.find(w => w.toLowerCase() === rev.baseWord.toLowerCase());
           if (isTargetBase) {
-            return `<span class="badge-target-word badge-variation" onclick="window.cm1App.speak('${token.replace(/'/g, "\\'")}')" title="Variation de '${rev.baseWord}' (${rev.type}) - clique pour écouter">${token} <small class="var-tag">var.</small></span>`;
+            return this.buildWordBadge(token, { kind: 'target', baseWord: rev.baseWord, type: rev.type }, dictee);
           }
           if (this.includePriorVocab && priorWords.some(w => w.toLowerCase() === rev.baseWord.toLowerCase())) {
-            return `<span class="badge-prior-word badge-variation" onclick="window.cm1App.speak('${token.replace(/'/g, "\\'")}')" title="Mot révisé varié de '${rev.baseWord}' (${rev.type}) - clique pour écouter">${token} <small class="var-tag">révisé</small></span>`;
+            return this.buildWordBadge(token, { kind: 'prior', baseWord: rev.baseWord, type: rev.type }, dictee);
           }
         }
 
         // Check if exact prior word
         if (this.includePriorVocab && priorWords.some(w => w.toLowerCase() === clean)) {
-          return `<span class="badge-prior-word" onclick="window.cm1App.speak('${token.replace(/'/g, "\\'")}')" title="Mot révisé d'une dictée précédente (clique pour écouter)">${token}</span>`;
+          return this.buildWordBadge(token, { kind: 'prior', baseWord: clean, type: null }, dictee);
         }
 
         return token;
       }).join('');
     };
+
+    // Multi-token phrases must be matched on the full text BEFORE tokenization,
+    // otherwise "s'attribue" would be split into "s" + "attribue" and never recognized.
+    const phrases = this.getMultiTokenPhrases(dictee, priorWords);
+    if (phrases.size === 0) return highlightTokens(text);
+
+    const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const patterns = [...phrases.keys()]
+      .sort((a, b) => b.length - a.length) // Longest phrases first
+      .map(key => escapeRegex(key).replace(/'/g, "['’]").replace(/ /g, '\\s+'));
+    const phraseRegex = new RegExp(`(?<!\\p{L})(${patterns.join('|')})(?!\\p{L})`, 'giu');
+
+    let html = '';
+    let lastIndex = 0;
+    for (const match of text.matchAll(phraseRegex)) {
+      const info = phrases.get(this.normalizeWordKey(match[0]));
+      if (!info) continue;
+      html += highlightTokens(text.slice(lastIndex, match.index));
+      html += this.buildWordBadge(match[0], info, dictee);
+      lastIndex = match.index + match[0].length;
+    }
+    html += highlightTokens(text.slice(lastIndex));
+    return html;
+  }
+
+  renderGeneratedContent() {
+    this.stopSpeech();
+    const dictee = this.getCurrentDictee();
+    const priorWords = this.getPriorWords();
+
+    // Helper to highlight words, recognizing both base forms AND all grammatical variations!
+    const highlightText = (text) => this.highlightText(text, dictee, priorWords);
 
     // 1. Discovery View
     const discoveryBox = document.getElementById('discoveryTextContainer');
